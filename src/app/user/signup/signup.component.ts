@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { UserDataService } from '../services/userdata.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,42 +13,53 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  submitted = false;
+
+  msg: any;
+  constructor(
+    private fb: FormBuilder,
+    private service: UserService,
+    private routes: Router,
+    private userData: UserDataService
+  ) {
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(8)]],
+      lastName: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
       password: [
         '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@#$%^&*]).{8,}$'
-          ),
-        ],
+        [Validators.required, Validators.minLength(8)],
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+        ),
       ],
-      confirmPassword: [
-        '',
-        [Validators.required, Validators.required, this.passwordMatchValidator],
-      ],
+      confirmPassword: ['', [Validators.required, Validators.required]],
     });
   }
-
   onSubmit() {
     // Submit the form data to your backend service
-    console.log(this.registerForm.value);
-  }
+    this.submitted = true;
+    console.log('muneeeee');
+    console.log(this.submitted);
 
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password');
-    const confirmPassword = form.get('confirmPassword');
+    this.service.registerUser(this.registerForm.value).subscribe({
+      next: (response) => {
+        console.log('sudais');
+        console.log(response);
+        this.msg = response.message;
 
-    return password &&
-      confirmPassword &&
-      password.value !== confirmPassword.value
-      ? { mismatch: true }
-      : null;
+        if (response.success) {
+          console.log('response from backend', response);
+          console.log(this.registerForm.value, 'hello');
+
+          this.userData.setUserData(this.registerForm.value);
+          this.routes.navigate(['otp-verification']);
+        }
+      },
+      error: (error) => {
+        console.error('Error registering user:', error);
+      },
+    });
   }
 }
