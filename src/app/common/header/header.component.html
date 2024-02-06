@@ -1,46 +1,54 @@
-<div class="section d-flex align-items-center justify-content-center">
-  <nav
-    class="navbar navbar-expand-lg fixed-top"
-    style="background-color: transparent"
-  >
-    <div class="container-fluid">
-      <a class="navbar-brand text-orangered" href="#">
-        <img
-          src="assets/img/your-company-icon.svg"
-          alt="Your Company Logo"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-        />
-        Rentina
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse mb-2" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-4 mb-lg-4">
-          <li class="nav-item mb-3">
-            <a class="nav-link text-orangered" href="#">Home</a>
-          </li>
-          <li class="nav-item mb-3 mx-auto">
-            <a class="nav-link text-orangered" href="#">Landlords</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-orangered" href="#">Tenants</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-orangered" href="#">Contact Us</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-orangered" href="#">
+      <img
+        src="/assets/rentina-high-resolution-logo-transparent.png"
+        width="120"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <button
+      class="navbar-toggler shadow-none border-0"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar "
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="sidebar offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      style="width: 250px"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">RENTINA</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-orangered" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-orangered" href="#">Landlords</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-orangered" href="#">Tenants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-orangered" href="#">Contact Us</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-</div>
+  </div>
+</nav>

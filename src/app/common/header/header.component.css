@@ -9,8 +9,28 @@
   background-color: white;
 }
 .nav-link {
-  margin-right: 60px;
+  width: 100px;
 }
 .navbar-brand {
   margin-left: 80px;
+}
+@media (max-width: 767px) {
+  .navbar-brand {
+    margin-left: 10px;
+  }
+  .navbar-toggle {
+    width: 40px;
+    height: 80px;
+  }
+  .navbar {
+    height: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  .navbar-nav {
+    margin-left: 320px;
+  }
+  .nav-item {
+    margin-left: 15px;
+  }
 }

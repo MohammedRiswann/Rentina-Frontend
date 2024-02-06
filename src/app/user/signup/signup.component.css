@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 20px;
-  min-height: 100vh;
+  max-height: 850px;
   font-family: Poppins, sans-serif;
 }
 
@@ -61,6 +61,7 @@ a {
     56,
     3
   ); /* Replace with your desired background color */
+  height: 1200px;
 }
 .text {
   color: #ff5500;
@@ -84,4 +85,21 @@ span {
   background-image: url("/assets/linedphoto-cGcHSGzSDoM-unsplash.jpg");
   background-size: cover;
   border-image: fill 0 linear-gradient(#0001, #000);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    margin-bottom: -50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-bottom: -60px;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    max-height: 1200px;
+  }
 }

@@ -97,3 +97,13 @@ span {
 a {
   font-size: large;
 }
+@media (max-width: 767px) {
+  .register-main-text {
+    font-size: 32px;
+  }
+}
+@media (max-width: 320px) {
+  .register-main-text {
+    font-size: 26px;
+  }
+}
