@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OtpComponent } from './user/otp/otp.component';
 import { RegisterComponent } from './user/signup/signup.component';
 import { HomeComponent } from './common/home/home.component';
+import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'user-login',
+    component: LoginComponent,
   },
 ];
 
