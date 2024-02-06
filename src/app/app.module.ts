@@ -10,9 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { OtpComponent } from './user/otp/otp.component';
 import { HomeComponent } from './common/home/home.component';
 import { LoginComponent } from './user/login/login.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { HeaderComponent } from './common/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, OtpComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, RegisterComponent, OtpComponent, HomeComponent, LoginComponent, FooterComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

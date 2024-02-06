@@ -1,12 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterComponent } from '../signup/signup.component';
 import { UserDataService } from '../services/userdata.service';
 import { Router } from '@angular/router';
@@ -45,6 +38,17 @@ export class OtpComponent implements OnInit {
     });
     console.log(this.userdata);
   }
+  // function for autonext in the otp inputs
+
+  autoNext(event: any) {
+    const input = event.target;
+    const nextInput = event.target.nextElementSibling;
+    if (input.value.length === 1 && nextInput) {
+      nextInput.focus();
+    }
+  }
+
+  // verifying the otp
 
   verifyOTP() {
     console.log(this.userdata, 'user daata');

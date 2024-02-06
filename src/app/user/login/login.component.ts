@@ -11,7 +11,7 @@ import { userloginService } from '../services/user-login.service';
 export class LoginComponent {
   loginForm!: FormGroup;
   errormsg: any = '';
-
+  msg: any = '';
   constructor(
     private form: FormBuilder,
     private router: Router,
@@ -30,7 +30,11 @@ export class LoginComponent {
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
+        this.msg = response.message;
         this.router.navigate(['home']);
+      },
+      error: (response) => {
+        this.msg = response.error.message;
       },
     });
   }

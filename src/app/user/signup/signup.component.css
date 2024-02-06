@@ -83,5 +83,5 @@ span {
 .bg-image {
   background-image: url("/assets/linedphoto-cGcHSGzSDoM-unsplash.jpg");
   background-size: cover;
-  background-blend-mode: multiply;
+  border-image: fill 0 linear-gradient(#0001, #000);
 }

@@ -1,0 +1,16 @@
+.navbar-nav {
+  display: flex;
+  margin-bottom: 15px; /* Adjust the space between navbar items */
+  margin-left: 450px;
+}
+
+.navbar {
+  padding-top: 20px; /* Adjust the space at the top of the navbar */
+  background-color: white;
+}
+.nav-link {
+  margin-right: 60px;
+}
+.navbar-brand {
+  margin-left: 80px;
+}

@@ -1,81 +1,54 @@
-<section class="text-center" style="text-align: center">
-  <!-- Background image -->
-  <div
-    class="p-5 bg-image"
-    style="
-      background-image: url('/assets/sean-pollock-PhYq704ffdA-unsplash.jpg');
-      border-image: fill 0 linear-gradient(#0001, #000);
-      background-size: cover;
-      margin-left: -20px;
-      height: 425px;
-    "
-  ></div>
-  <!-- Background image -->
-
-  <div class="container">
-    <!-- Added container class -->
-    <div class="card mx-auto shadow-5-strong d-flex" style="margin-top: -200px">
-      <div class="card-body py-5 px-md-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">LOGIN</h2>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row">
-                <div class="col-12 col-md-10 mb-2 mx-auto">
-                  <!-- Adjusted column width -->
-                  <label class="form-label" for="phoneNumber"
-                    >Phone Number</label
-                  >
-                  <div class="form-outline">
-                    <input
-                      type="text"
-                      id="phoneNumber"
-                      class="form-control"
-                      formControlName="phone"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Password input -->
-              <div class="row justify-content-center">
-                <div class="col-12 col-md-10 mb-2 mx-auto">
-                  <!-- Adjusted column width -->
-                  <label class="form-label" for="password">Password</label>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      formControlName="password"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Submit button -->
-              <button
-                type="submit"
-                class="btn btn-primary btn-block mb-3 custom-btn"
-                style="
-                  background-color: orangered;
-                  border-color: orangered;
-                  width: 100%;
-                  max-width: 180px;
-                  height: 40px;
-                  font-weight: 700;
-                "
-              >
-                LOGIN
-              </button>
-
-              <!-- Link to signup page -->
-              <p>Not signed up? <a href="signup.html">Sign up here</a></p>
-            </form>
+<body
+  class="custom-bg-color d-flex justify-content-center align-items-center bg-image"
+>
+  <div class="container bg-white col-md-10 rounded mb-5">
+    <h1 class="mb-5 register-main-text">Welcome Back !</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="row justify-content-center">
+        <div class="col-md-8 mb-2">
+          <div class="form-group">
+            <label for="phone">Phone Number <span>*</span></label>
+            <input
+              type="tel"
+              class="form-control bg-input-color"
+              id="phone"
+              formControlName="phone"
+              placeholder="Enter phone number"
+            />
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 mb-2">
+          <div class="form-group">
+            <label for="password">Password <span>*</span></label>
+            <input
+              type="password"
+              class="form-control bg-input-color"
+              id="password"
+              formControlName="password"
+              required
+              placeholder="Enter Password"
+            />
+          </div>
+          <p class="text-danger">{{ msg }}</p>
+
+          <div class="d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-primary d-flex col-md-4 d-flex justify-content-center"
+            >
+              LOGIN
+            </button>
+          </div>
+
+          <p class="text-center mb-5">
+            Hey , New to Rentina ?
+            <a [routerLink]="['']" class="text">click here</a> to Register
+          </p>
+        </div>
+      </div>
+    </form>
   </div>
-</section>
+</body>
