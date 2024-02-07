@@ -1,1 +1,177 @@
-<p>home works!</p>
+<div
+  class="image-wrapper d-flex align-items-center min-vh-100"
+  style="overflow: hidden"
+>
+  <div
+    class="container-fluid px-0 d-none d-md-flex align-items-center justify-content-between min-vh-100"
+    style="
+      background-image: url('/assets/Homepage.png');
+      background-size: cover;
+      background-position: center;
+      border-image: fill 0 linear-gradient(#0001, #000);
+    "
+  >
+    <div class="col-md-5 text-white pt-5 ps-5 text-start">
+      <h1
+        class="display-6 fw-bold"
+        style="
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          font-size: 50px;
+          word-break: break-all;
+        "
+      >
+        Discover the finest
+        <span style="color: orange; font-size: 55px">Accommodations.</span>
+        <br />Your comfort, <br />our priority.
+      </h1>
+    </div>
+    <div
+      class="col-md-6 d-flex flex-column pt-5 pe-5 justify-content-around min-h-50"
+    >
+      <div
+        class="map-container mb-3"
+        style="
+          background-image: url('/assets/map.jpg');
+          background-size: cover;
+          padding: 10px;
+          flex-grow: 1;
+          height: 320px;
+
+          border-radius: 5px;
+        "
+      ></div>
+      <div class="input-group mb-3 w-100">
+        <input
+          type="text"
+          class="form-control me-3 search-input"
+          placeholder="Search by location, amenities, etc."
+          style="
+            height: 50px;
+            border-radius: 0px;
+            background-color: rgb(255, 255, 255);
+            width: 100px;
+          "
+        />
+        <div class="input-group-append">
+          <button
+            type="button"
+            class="btn btn-lg btn-orangered"
+            style="
+              height: 50px;
+              border-radius: 0px;
+              background-color: orangered;
+              color: white;
+              width: 190px;
+            "
+          >
+            Search
+          </button>
+        </div>
+      </div>
+      <!-- Add the filter option here -->
+      <div class="input-group mb-3 w-100">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          style="height: 50px; border-radius: 0px"
+        >
+          <option selected>Filter by...</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- for mobile and tab -->
+  <div
+    class="container-fluid px-0 d-flex flex-column align-items-center justify-content-center min-vh-100 d-md-none"
+    style="
+      background-image: url('/assets/Homepage.png');
+      background-size: cover;
+      background-position: center;
+      border-image: fill 0 linear-gradient(#0001, #000);
+    "
+  >
+    <div style="padding: 20px; max-width: 768px; width: 100%">
+      <span class="span-hcustom"
+        ><h3
+          class="text-white mb-3 fw-bold text-center"
+          style="
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+            margin-top: 100px;
+          "
+        >
+          Discover the finest<br /><span
+            style="color: orange"
+            class="span-custom"
+            >Accommodations</span
+          >
+        </h3>
+      </span>
+      <div
+        class="map-container mb-3 col-md-6"
+        style="
+          background-image: url('/assets/map.jpg');
+          background-size: cover;
+          padding: 10px;
+          flex-grow: 1;
+          height: 340px;
+          width: 100%;
+          border-radius: 5px;
+          margin-top: 30px;
+        "
+      ></div>
+      <div
+        class="input-group mb-3"
+        style="background-color: white; padding: 30px; border-radius: 5px"
+      >
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Search by location, amenities, etc."
+          style="
+            height: 50px;
+            border-radius: 0px;
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 50%;
+          "
+        />
+        <div class="input-group mb-3 w-100">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            style="
+              height: 50px;
+              border-radius: 0px;
+              margin-bottom: 0px;
+              width: 50%;
+            "
+          >
+            <option selected>Filter by...</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+        </div>
+        <div class="input-group-append w-100">
+          <button
+            type="button"
+            class="btn btn-lg btn-orangered"
+            style="
+              height: 50px;
+              border-radius: 0px;
+              background-color: orangered;
+              color: white;
+              width: 100%;
+            "
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

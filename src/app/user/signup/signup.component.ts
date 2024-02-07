@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { UserDataService } from '../services/userdata.service';
+import { jwtToken } from '../services/jwt.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,15 +17,17 @@ export class RegisterComponent {
   submitted = false;
 
   msg: any;
+  msgg: any;
   constructor(
     private fb: FormBuilder,
     private service: UserService,
     private routes: Router,
-    private userData: UserDataService
+    private userData: UserDataService,
+    private token: jwtToken
   ) {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(8)]],
-      lastName: ['', [Validators.required, Validators.minLength(8)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
       password: [
@@ -47,18 +50,17 @@ export class RegisterComponent {
       next: (response) => {
         console.log('sudais');
         console.log(response);
-        this.msg = response.message;
 
         if (response.success) {
-          console.log('response from backend', response);
-          console.log(this.registerForm.value, 'hello');
+          console.log(response.message);
 
+          this.token.setToken(response.token);
           this.userData.setUserData(this.registerForm.value);
           this.routes.navigate(['otp-verification']);
         }
       },
       error: (error) => {
-        console.error('Error registering user:', error);
+        this.msgg = error.error.message;
       },
     });
   }

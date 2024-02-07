@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { userloginService } from '../services/user-login.service';
+import { jwtToken } from '../services/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private form: FormBuilder,
     private router: Router,
-    private service: userloginService
+    private service: userloginService,
+    private token: jwtToken
   ) {}
   ngOnInit(): void {
     this.loginForm = this.form.group({
@@ -30,6 +32,8 @@ export class LoginComponent {
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
+        console.log(response.token);
+        this.token.setToken(response.token);
         this.msg = response.message;
         this.router.navigate(['home']);
       },
