@@ -29,13 +29,14 @@ export class LoginComponent {
   onSubmit() {
     console.log('clicked');
     const { phone, password } = this.loginForm.value;
+    console.log('one');
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
         console.log(response.token);
         this.token.setToken(response.token);
         this.msg = response.message;
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
       },
       error: (response) => {
         this.msg = response.error.message;

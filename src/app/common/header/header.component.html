@@ -1,54 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand text-orangered" href="#">
-      <img
-        src="/assets/rentina-high-resolution-logo-transparent.png"
-        width="120"
-        height="30"
-        class="d-inline-block align-top"
-        alt=""
-      />
-    </a>
-    <button
-      class="navbar-toggler shadow-none border-0"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasNavbar "
-      aria-controls="offcanvasNavbar"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="sidebar offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasNavbar"
-      aria-labelledby="offcanvasNavbarLabel"
-      style="width: 250px"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">RENTINA</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
+<body>
+  <nav
+    class="navbar navbar-expand-lg bg-white position-fixed z-3 w-100 custom-nav"
+  >
+    <div class="container-fluid mx-lg-5">
+      <a class="navbar-brand" [routerLink]="['Home']">RENTINA</a>
+      <button
+        class="navbar-toggler shadow-none border-0"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="sidebar offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">RENTINA</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul
+            class="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['']"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">Lands</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+          <div
+            class="buttons d-flex justify-content-center justify-content-lg-end"
+          >
+            <!-- Modified this line -->
+            <button class="btn button-one" [routerLink]="['user-login']">
+              Login
+            </button>
+            <button
+              class="btn btn-orange ms-lg-2"
+              [routerLink]="['user-signup']"
+            >
+              Register
+            </button>
+            <!-- Added ms-lg-2 class to add margin for larger screens -->
+          </div>
+        </div>
       </div>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-orangered" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-orangered" href="#">Landlords</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-orangered" href="#">Tenants</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-orangered" href="#">Contact Us</a>
-        </li>
-      </ul>
     </div>
-  </div>
-</nav>
+  </nav>
+</body>

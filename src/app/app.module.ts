@@ -14,10 +14,6 @@ import { FooterComponent } from './common/footer/footer.component';
 import { HeaderComponent } from './common/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, OtpComponent],
-  imports: [FormsModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
-})
-@NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,

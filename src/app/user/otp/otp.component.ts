@@ -64,7 +64,7 @@ export class OtpComponent implements OnInit {
 
         if (response.success) {
           console.log('otp success');
-          this.routes.navigate(['home']);
+          this.routes.navigate(['']);
         }
       },
       error: (error) => {

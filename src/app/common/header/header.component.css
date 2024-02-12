@@ -1,36 +1,41 @@
-.navbar-nav {
-  display: flex;
-  margin-bottom: 15px; /* Adjust the space between navbar items */
-  margin-left: 450px;
-}
-
-.navbar {
-  padding-top: 20px; /* Adjust the space at the top of the navbar */
+body {
   background-color: white;
 }
-.nav-link {
-  width: 100px;
+nav {
+  height: 80px;
+}
+
+/* For the Login button */
+.button-one {
+  color: orangered;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
+}
+
+.button-one:hover {
+  color: darkorange;
+}
+
+/* For the Register button */
+.btn-orange {
+  color: orangered;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-orange:hover {
+  color: darkorange;
 }
 .navbar-brand {
-  margin-left: 80px;
+  color: orangered;
 }
-@media (max-width: 767px) {
-  .navbar-brand {
-    margin-left: 10px;
-  }
-  .navbar-toggle {
-    width: 40px;
-    height: 80px;
-  }
-  .navbar {
-    height: 80px;
-  }
-}
-@media (max-width: 1024px) {
-  .navbar-nav {
-    margin-left: 320px;
-  }
-  .nav-item {
-    margin-left: 15px;
-  }
+.buttons {
+  margin-right: 27px;
 }
