@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:2000/users/signup';
+  private baseUrl = 'http://localhost:2000';
 
   constructor(private http: HttpClient) {}
 
@@ -14,6 +14,11 @@ export class UserService {
     console.log('sinan shaaaaaa');
     console.log(userData);
 
-    return this.http.post(`${this.baseUrl}`, userData);
+    return this.http.post(`${this.baseUrl}/users/signup`, userData);
+  }
+  registerSeller(sellerData: any): Observable<any> {
+    console.log('sellerservice');
+
+    return this.http.post(`${this.baseUrl}/seller/register`, sellerData);
   }
 }
