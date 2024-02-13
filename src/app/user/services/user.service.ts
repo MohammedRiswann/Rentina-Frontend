@@ -19,6 +19,6 @@ export class UserService {
   registerSeller(sellerData: any): Observable<any> {
     console.log('sellerservice');
 
-    return this.http.post(`${this.baseUrl}/seller/register`, sellerData);
+    return this.http.post(`${this.baseUrl}/sellers/register`, sellerData);
   }
 }

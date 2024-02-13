@@ -13,10 +13,12 @@ export class UserDataService {
 
   setUserData(data: any) {
     console.log(data);
-
     this.userDataSubject.next(data);
   }
   isRegistrationComplited() {
     return this.registrationComplited;
+  }
+  isRegistrationTrue() {
+    return (this.registrationComplited = true);
   }
 }

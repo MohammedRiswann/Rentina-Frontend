@@ -35,6 +35,7 @@ export class LoginComponent {
       next: (response) => {
         console.log(response.token);
         this.token.setToken(response.token);
+        localStorage.setItem('type', response.type);
         this.msg = response.message;
         this.router.navigate(['']);
       },

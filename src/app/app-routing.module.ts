@@ -10,6 +10,7 @@ import { otpGuard } from './guards/otp.guard';
 import { LandComponent } from './land/land.component';
 import { Logincomponent } from './seller/login/login.component';
 import { SignupComponent } from './seller/signup/signup.component';
+import { HomeComponentSeller } from './seller/home/home.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,14 @@ const routes: Routes = [
     path: 'seller-register',
     component: SignupComponent,
   },
+  {
+    path: 'seller-home',
+    component: HomeComponentSeller,
+  },
+  // {
+  //   path: 'otp-seller-verification',
+  //   component: userType,
+  // },
 ];
 
 @NgModule({

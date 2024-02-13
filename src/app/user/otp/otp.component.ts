@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { RegisterComponent } from '../signup/signup.component';
 import { UserDataService } from '../services/userdata.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OtpService } from '../services/otp.service';
 import { response } from 'express';
+import { jwtToken } from '../services/jwt.service';
 
 @Component({
   selector: 'app-otp',
@@ -20,20 +21,34 @@ export class OtpComponent implements OnInit {
   otp5: string = '';
   otp6: string = '';
   error: string = '';
+  userType = 'users';
 
   constructor(
     private http: HttpClient,
     private userDataService: UserDataService,
     private routes: Router,
-    private otpService: OtpService
+    private otpService: OtpService,
+    private jwtService: jwtToken,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   userdata: any;
   errorr: boolean = false;
-
   private baseUrl = 'http://localhost:2000';
 
   ngOnInit(): void {
+    // Subscribe to query params (isUsers)
+    this.activatedRoute.queryParamMap.subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data.get('isUser') == 'true') {
+          this.userType = 'users';
+        } else {
+          this.userType = 'sellers';
+        }
+      },
+    });
+
     this.userDataService.userData$.subscribe((data) => {
       console.log(data, 'userdata');
 
@@ -57,12 +72,27 @@ export class OtpComponent implements OnInit {
     console.log(this.userdata, 'user daata');
 
     const otp = `${this.otp1}${this.otp2}${this.otp3}${this.otp4}${this.otp5}${this.otp6}`;
+    console.log(otp);
 
-    this.otpService.verifyOtp(this.userdata, otp).subscribe({
+    this.otpService.verifyOtp(this.userdata, otp, this.userType).subscribe({
       next: (response) => {
+        console.log('success');
+
         if (response.success) {
-          console.log('otp success');
-          this.routes.navigate(['']);
+          localStorage.setItem('type', response.type);
+          if (response.type === 'user') {
+            console.log('main');
+
+            this.jwtService.setToken(response.token);
+            this.routes.navigate(['']);
+          } else if (response.type === 'seller') {
+            console.log('else');
+
+            localStorage.setItem('type', response.type);
+            console.log('otp success in else');
+            this.jwtService.setToken(response.token);
+            this.routes.navigate(['seller-home']);
+          }
         }
       },
       error: (error) => {

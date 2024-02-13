@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { UserDataService } from '../services/userdata.service';
 import { jwtToken } from '../services/jwt.service';
+import { OtpService } from '../services/otp.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,8 @@ export class RegisterComponent {
     private service: UserService,
     private routes: Router,
     private userData: UserDataService,
-    private token: jwtToken
+    private token: jwtToken,
+    private otpService: UserDataService
   ) {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(8)]],
@@ -52,11 +54,12 @@ export class RegisterComponent {
         console.log(response);
 
         if (response.success) {
-          console.log(response.message);
-
-          this.token.setToken(response.token);
+          console.log(response);
+          this.otpService.isRegistrationTrue();
           this.userData.setUserData(this.registerForm.value);
-          this.routes.navigate(['otp-verification']);
+          this.routes.navigate(['otp-verification'], {
+            queryParams: { isUser: 'true' },
+          });
         }
       },
       error: (error) => {
