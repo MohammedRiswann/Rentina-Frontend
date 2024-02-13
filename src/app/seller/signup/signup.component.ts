@@ -22,7 +22,8 @@ export class SignupComponent {
     private service: UserService,
     private routes: Router,
     private userData: UserDataService,
-    private token: jwtToken
+    private token: jwtToken,
+    private otpService: UserDataService
   ) {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(8)]],
@@ -58,12 +59,11 @@ export class SignupComponent {
           console.log('hellooow');
 
           if (response.success) {
-            console.log('shaheer');
-
-            // Store user data in local storage or service for use in OTP verification
-            this.token.setToken(response.token);
-            this.userData.setUserData(this.registerForm.value);
-            this.routes.navigate(['otp-verification']);
+            this.otpService.isRegistrationTrue();
+            this.otpService.setUserData(formData);
+            this.routes.navigate(['otp-verification'], {
+              queryParams: { isUser: false },
+            });
           }
         },
         error: (error) => {
