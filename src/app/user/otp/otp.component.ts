@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterComponent } from '../signup/signup.component';
 import { UserDataService } from '../services/userdata.service';
 import { Router } from '@angular/router';
+import { OtpService } from '../services/otp.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-otp',
@@ -22,13 +24,14 @@ export class OtpComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private userDataService: UserDataService,
-    private routes: Router
+    private routes: Router,
+    private otpService: OtpService
   ) {}
 
   userdata: any;
   errorr: boolean = false;
 
-  private baseUrl = 'http://localhost:2000/users';
+  private baseUrl = 'http://localhost:2000';
 
   ngOnInit(): void {
     this.userDataService.userData$.subscribe((data) => {
@@ -54,14 +57,9 @@ export class OtpComponent implements OnInit {
     console.log(this.userdata, 'user daata');
 
     const otp = `${this.otp1}${this.otp2}${this.otp3}${this.otp4}${this.otp5}${this.otp6}`;
-    const requestData = {
-      ...this.userdata, // Spread operator to include form data
-      otp: otp, // Add OTP to the request body
-    };
-    this.http.post<any>(`${this.baseUrl}/verify-otp`, requestData).subscribe({
-      next: (response) => {
-        console.log(response);
 
+    this.otpService.verifyOtp(this.userdata, otp).subscribe({
+      next: (response) => {
         if (response.success) {
           console.log('otp success');
           this.routes.navigate(['']);

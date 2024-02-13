@@ -39,10 +39,10 @@
               >
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Seller</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#">Lands</a>
+              <a class="nav-link" [routerLink]="['user-land']">Lands</a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="#">Contact Us</a>
@@ -51,7 +51,6 @@
           <div
             class="buttons d-flex justify-content-center justify-content-lg-end"
           >
-            <!-- Modified this line -->
             <button class="btn button-one" [routerLink]="['user-login']">
               Login
             </button>
@@ -61,7 +60,6 @@
             >
               Register
             </button>
-            <!-- Added ms-lg-2 class to add margin for larger screens -->
           </div>
         </div>
       </div>

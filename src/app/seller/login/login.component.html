@@ -1,0 +1,53 @@
+<body
+  class="custom-bg-color d-flex justify-content-center align-items-center bg-image"
+>
+  <div class="container bg-white col-md-10 rounded mb-6">
+    <h1 class="mb-5 register-main-text">Welcome Back !</h1>
+    <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
+    <div class="row justify-content-center">
+      <div class="col-md-8 mb-2">
+        <div class="form-group">
+          <label for="phone">Phone Number <span>*</span></label>
+          <input
+            type="tel"
+            class="form-control bg-input-color"
+            id="phone"
+            formControlName="phone"
+            placeholder="Enter phone number"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 mb-2">
+        <div class="form-group">
+          <label for="password">Password <span>*</span></label>
+          <input
+            type="password"
+            class="form-control bg-input-color"
+            id="password"
+            formControlName="password"
+            required
+            placeholder="Enter Password"
+          />
+        </div>
+        <!-- <p class="text-danger">{{ msg }}</p> -->
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            class="btn btn-primary d-flex col-md-4 d-flex justify-content-center"
+          >
+            LOGIN
+          </button>
+        </div>
+
+        <!-- <p class="text-center mb-5">
+          Hey , New to Rentina ?
+          <a [routerLink]="['']" class="text">click here</a> to Register
+        </p> -->
+      </div>
+    </div>
+  </div>
+</body>
