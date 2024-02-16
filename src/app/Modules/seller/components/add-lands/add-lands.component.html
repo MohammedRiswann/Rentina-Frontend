@@ -1,0 +1,38 @@
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<form (ngSubmit)="addProduct()">
+  <label for="productName">Product Name:</label>
+  <input
+    type="text"
+    id="productName"
+    name="productName"
+    [(ngModel)]="productName"
+  />
+
+  <label for="productPrice">Product Price:</label>
+  <input
+    type="number"
+    id="productPrice"
+    name="productPrice"
+    [(ngModel)]="productPrice"
+  />
+
+  <label for="productImages">Product Images (up to 7):</label>
+  <input
+    type="file"
+    id="productImages"
+    name="productImages"
+    multiple
+    (change)="onFileChange($event)"
+  />
+
+  <button type="submit">Add Product</button>
+</form>

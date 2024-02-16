@@ -1,32 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './Modules/user/component/app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './user/signup/signup.component';
-
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { OtpComponent } from './user/otp/otp.component';
+import { OtpComponent } from './common/otp/otp.component';
 import { HomeComponent } from './common/home/home.component';
-import { LoginComponent } from './user/login/login.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HeaderComponent } from './common/header/header.component';
-import { LandComponent } from './land/land.component';
-import { SignupComponent } from './seller/signup/signup.component';
-import { InterceptorService } from './user/services/interceptor.service';
+import { LandComponent } from './common/land/land.component';
+import { InterceptorService } from './common/services/interceptor.service';
+import { NotFoundComponent } from './common/not-found/not-found.component';
+import { SellersModule } from './Modules/seller/sellers.module';
+import { UserRoutingModule } from './Modules/user/user-routing.module';
+import { AdminModule } from './Modules/admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     OtpComponent,
     HomeComponent,
-    LoginComponent,
+
     FooterComponent,
     HeaderComponent,
     LandComponent,
-    SignupComponent,
+
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,9 @@ import { InterceptorService } from './user/services/interceptor.service';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    SellersModule,
+    UserRoutingModule,
+    AdminModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
