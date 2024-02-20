@@ -1,0 +1,39 @@
+<div>
+  <h1><input type="text" [(ngModel)]="details.name" name="name" /></h1>
+  <p>
+    <strong>Price:</strong>
+    <input type="text" [(ngModel)]="details.price" name="price" />
+  </p>
+  <!-- Display images if any -->
+  <div *ngIf="details.images && details.images.length > 0">
+    <p><strong>Images:</strong></p>
+    <div class="image-container">
+      <img
+        *ngFor="let image of details.images"
+        [src]="image"
+        alt="Property Image"
+      />
+    </div>
+  </div>
+  <p>
+    <strong>Description:</strong>
+    <input type="text" [(ngModel)]="details.description" name="description" />
+  </p>
+  <p>
+    <strong>Features:</strong>
+    <input type="text" [(ngModel)]="details.features" name="features" />
+  </p>
+  <p>
+    <strong>Type:</strong>
+    <input type="text" [(ngModel)]="details.type" name="type" />
+  </p>
+  <p>
+    <strong>Location:</strong>
+    <input type="text" [(ngModel)]="details.location" name="location" />
+  </p>
+  <p>
+    <strong>Role:</strong>
+    <input type="text" [(ngModel)]="details.role" name="role" />
+  </p>
+  <button (click)="editProfile()">Edit</button>
+</div>

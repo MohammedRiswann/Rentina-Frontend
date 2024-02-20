@@ -1,14 +1,14 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OtpComponent } from '../../../common/otp/otp.component';
+import { OtpComponent } from './common/otp/otp.component';
 
-import { HomeComponent } from '../../../common/home/home.component';
+import { HomeComponent } from './common/home/home.component';
 
-import { Authguard } from '../../../guards/home.guard';
+import { Authguard } from './guards/home.guard';
 
-import { otpGuard } from '../../../guards/otp.guard';
+import { otpGuard } from './guards/otp.guard';
 
-import { NotFoundComponent } from '../../../common/not-found/not-found.component';
+import { NotFoundComponent } from './common/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -25,17 +25,17 @@ const routes: Routes = [
   {
     path: 'seller',
     loadChildren: () =>
-      import('../../seller/sellers.module').then((e) => e.SellersModule),
+      import('./Modules/seller/sellers.module').then((e) => e.SellersModule),
   },
   {
     path: 'user',
     loadChildren: () =>
-      import('../../user/component/user.module').then((e) => e.UserModule),
+      import('./Modules/user/component/user.module').then((e) => e.UserModule),
   },
   {
     path: 'admin',
     loadChildren: () =>
-      import('../../admin/admin.module').then((e) => e.AdminModule),
+      import('./Modules/admin/admin.module').then((e) => e.AdminModule),
   },
 
   {

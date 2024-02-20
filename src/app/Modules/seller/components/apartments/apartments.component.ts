@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApartmentService } from '../../services/apartments.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-apartments',
@@ -8,8 +9,12 @@ import { ApartmentService } from '../../services/apartments.service';
 })
 export class ApartmentsComponent implements OnInit {
   apartments: any[] = [];
+  details: any;
 
-  constructor(private apartmentService: ApartmentService) {}
+  constructor(
+    private apartmentService: ApartmentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getApartments();
@@ -28,5 +33,11 @@ export class ApartmentsComponent implements OnInit {
       console.log('deleted succesfully');
       this.getApartments();
     });
+  }
+
+  viewDetails(apartmentId: string): void {
+    console.log('hell');
+
+    this.router.navigate([`/seller/Property-details/${apartmentId}`]);
   }
 }

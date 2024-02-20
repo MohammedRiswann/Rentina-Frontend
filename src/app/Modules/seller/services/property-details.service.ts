@@ -15,4 +15,7 @@ export class PropertyDetailsService {
       `${this.apiUrl}/sellers/apartments-list/${propertyId}`
     );
   }
+  updatePropertyDetails(id: string, updatedDetails: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/properties/${id}`, updatedDetails);
+  }
 }

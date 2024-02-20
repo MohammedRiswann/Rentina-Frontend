@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './Modules/user/component/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OtpComponent } from './common/otp/otp.component';
@@ -20,11 +20,9 @@ import { AdminModule } from './Modules/admin/admin.module';
     AppComponent,
     OtpComponent,
     HomeComponent,
-
     FooterComponent,
     HeaderComponent,
     LandComponent,
-
     NotFoundComponent,
   ],
   imports: [

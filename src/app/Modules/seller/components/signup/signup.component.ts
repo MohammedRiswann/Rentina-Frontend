@@ -61,9 +61,12 @@ export class SignupComponent {
         next: (response) => {
           if (response.success) {
             console.log('successful reponse');
+            const token = response.token;
+            localStorage.setItem('token', token);
 
             this.otpService.isRegistrationTrue();
             this.otpService.setUserData(this.registerForm.value);
+
             this.routes.navigate(['otp-verification'], {
               queryParams: { isUser: false },
             });

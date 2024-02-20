@@ -1,1 +1,94 @@
-<p>all-details works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Form</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 100px; /* Add padding here */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background-color: #ffffff;
+        padding: 40px; /* Adjust padding */
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Adjust width as needed */
+      }
+      .details-label {
+        font-weight: bold;
+      }
+      .details-text {
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      img {
+        height: 70px;
+        width: 100px;
+      }
+      strong {
+        margin-right: 10px; /* Adjust margin */
+      }
+      p {
+        margin-bottom: 10px; /* Adjust margin */
+      }
+      .row {
+        display: flex;
+      }
+      .col-md-6 {
+        flex: 1;
+        margin-right: 20px; /* Adjust margin */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ details.name }}</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="details-label">Price:</p>
+          <p class="details-text">{{ details.price }}</p>
+          <div class="d-flex flex-wrap">
+            <div
+              *ngFor="let image of details.images; let i = index"
+              class="mr-2 mb-2"
+            >
+              <img src="{{ image }}" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p class="details-label">Description:</p>
+          <p class="details-text">{{ details.description }}</p>
+          <p class="details-label">Features:</p>
+          <p class="details-text">{{ details.features }}</p>
+          <p class="details-label">Type:</p>
+          <p class="details-text">{{ details.type }}</p>
+          <p class="details-label">Location:</p>
+          <p class="details-text">{{ details.location }}</p>
+          <p class="details-label">Role:</p>
+          <p class="details-text">{{ details.role }}</p>
+        </div>
+        <button (click)="editProfile()">Edit</button>
+      </div>
+    </div>
+  </body>
+</html>

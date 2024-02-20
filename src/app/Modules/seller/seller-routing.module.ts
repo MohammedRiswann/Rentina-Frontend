@@ -8,6 +8,9 @@ import { NotFoundComponent } from 'src/app/common/not-found/not-found.component'
 import { AddProductsComponent } from './components/add-products/add-products.component';
 import { AddLandsComponent } from './components/add-lands/add-lands.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
+import { AllDetailsComponent } from './components/all-details/all-details.component';
+import { EditDetailsComponent } from './components/edit-details/edit-details.component';
+import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,18 @@ const routes: Routes = [
   {
     path: 'apartments-list',
     component: ApartmentsComponent,
+  },
+  {
+    path: 'Property-details/:id',
+    component: AllDetailsComponent,
+  },
+  {
+    path: 'edit-details/:id',
+    component: EditDetailsComponent,
+  },
+  {
+    path: 'profile',
+    component: SellerProfileComponent,
   },
 
   {
