@@ -1,0 +1,136 @@
+<div class="container">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      display: flex; /* Enable flexbox for centering */
+      flex-direction: column; /* Stack elements vertically */
+      justify-content: center; /* Align vertically in center */
+      align-items: center;
+    }
+
+    .container {
+      /* Remove unnecessary properties inherited from body */
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .btn-delete {
+      background-color: #ff4500; /* Orange-red color */
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-details {
+      background-color: #ff4500; /* Orange-red color */
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .btn-delete:hover {
+      background-color: white;
+      color: orangered;
+      border: 1px solid orangered;
+      transition: 0.1s;
+    }
+    .btn-details:hover {
+      background-color: white;
+      color: orangered;
+      border: 1px solid orangered;
+      transition: 0.1s;
+    }
+
+    @media screen and (max-width: 600px) {
+      td:nth-child(7) {
+        display: none; /* Hide Description on small screens */
+      }
+      .description {
+        display: none; /* Hide "Description" header on small screens */
+      }
+    }
+  </style>
+
+  <body>
+    <h1>List of Apartments</h1>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Location</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <!-- Empty header for buttons -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let apartment of apartments">
+            <td>{{ apartment.name }}</td>
+            <td>{{ apartment.price }}</td>
+            <td>{{ apartment.location }}</td>
+            <td>
+              <button
+                class="btn-delete"
+                (click)="deleteApartments(apartment._id)"
+              >
+                Delete
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn-details"
+                [queryParams]="{ id: apartment._id }"
+                [routerLink]="['/admin/apartment-details']"
+              >
+                View Details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="no-properties" *ngIf="apartments.length === 0">
+        No properties to list here.
+      </div>
+    </div>
+  </body>
+</div>

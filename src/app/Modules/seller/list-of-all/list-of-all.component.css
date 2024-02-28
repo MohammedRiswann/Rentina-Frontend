@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Set height to full viewport height */
+}
+
+.buttons-container {
+  margin-top: 100px; /* Additional margin on top */
+}
+
+.buttons-container button {
+  margin: 5px; /* Add some space between buttons */
+}

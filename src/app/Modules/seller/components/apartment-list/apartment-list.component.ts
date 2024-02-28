@@ -1,13 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApartmentService } from '../../services/apartments.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-apartments',
-  templateUrl: './apartments.component.html',
-  styleUrls: ['./apartments.component.css'],
+  selector: 'app-apartment-list',
+  templateUrl: './apartment-list.component.html',
+  styleUrls: ['./apartment-list.component.css'],
 })
-export class ApartmentsComponent implements OnInit {
+export class ApartmentListComponent {
   apartments: any[] = [];
   details: any;
 

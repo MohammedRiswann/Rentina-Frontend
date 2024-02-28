@@ -7,10 +7,12 @@ import { LogincomponentSeller } from './components/login/login.component';
 import { NotFoundComponent } from 'src/app/common/not-found/not-found.component';
 import { AddProductsComponent } from './components/add-products/add-products.component';
 import { AddLandsComponent } from './components/add-lands/add-lands.component';
-import { ApartmentsComponent } from './components/apartments/apartments.component';
+
 import { AllDetailsComponent } from './components/all-details/all-details.component';
 import { EditDetailsComponent } from './components/edit-details/edit-details.component';
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
+import { ListOfAllComponent } from './list-of-all/list-of-all.component';
+import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,25 @@ const routes: Routes = [
     path: 'home',
     canActivate: [AuthguardSeller],
     component: HomeComponentSeller,
+    children: [
+      {
+        path: 'profile',
+        component: SellerProfileComponent,
+      },
+
+      {
+        path: 'lands',
+        component: ListOfAllComponent,
+      },
+      {
+        path: 'properties',
+        component: ApartmentListComponent,
+      },
+    ],
+  },
+  {
+    path: 'Property-details/:id',
+    component: AllDetailsComponent,
   },
   {
     path: 'login',
@@ -31,21 +52,10 @@ const routes: Routes = [
     path: 'add-lands',
     component: AddLandsComponent,
   },
-  {
-    path: 'apartments-list',
-    component: ApartmentsComponent,
-  },
-  {
-    path: 'Property-details/:id',
-    component: AllDetailsComponent,
-  },
+
   {
     path: 'edit-details/:id',
     component: EditDetailsComponent,
-  },
-  {
-    path: 'profile',
-    component: SellerProfileComponent,
   },
 
   {

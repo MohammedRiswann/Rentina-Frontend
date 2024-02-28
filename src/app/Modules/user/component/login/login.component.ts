@@ -33,11 +33,14 @@ export class LoginComponent {
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
-        console.log(response.token);
-        this.token.setToken(response.token);
-        localStorage.setItem('type', response.type);
-        this.msg = response.message;
-        this.router.navigate(['']);
+        if (response.isAdmin) {
+          this.router.navigate(['/admin/home']);
+        } else {
+          this.token.setToken(response.token);
+          localStorage.setItem('type', response.type);
+          this.msg = response.message;
+          this.router.navigate(['']);
+        }
       },
       error: (response) => {
         this.msg = response.error.message;

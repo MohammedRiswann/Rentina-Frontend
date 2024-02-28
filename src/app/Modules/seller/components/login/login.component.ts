@@ -40,7 +40,7 @@ export class LogincomponentSeller {
         this.token.setToken(response.token);
         localStorage.setItem('type', response.type);
         this.msg = response.message;
-        this.router.navigate(['']);
+        this.router.navigate(['/seller/home']);
       },
       error: (response) => {
         this.msg = response.error.message;

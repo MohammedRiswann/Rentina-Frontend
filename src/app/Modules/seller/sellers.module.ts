@@ -13,11 +13,13 @@ import { SellerRoutingModule } from './seller-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddProductsComponent } from './components/add-products/add-products.component';
 import { AddLandsComponent } from './components/add-lands/add-lands.component';
-import { ApartmentsComponent } from './components/apartments/apartments.component';
+
 import { AllDetailsComponent } from './components/all-details/all-details.component';
 import { EditDetailsComponent } from './components/edit-details/edit-details.component';
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
 import { InterceptorService } from './common-Interceptor/interceptor.service';
+import { ListOfAllComponent } from './list-of-all/list-of-all.component';
+import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { InterceptorService } from './common-Interceptor/interceptor.service';
     SignupComponent,
     AddProductsComponent,
     AddLandsComponent,
-    ApartmentsComponent,
+
     AllDetailsComponent,
     EditDetailsComponent,
     SellerProfileComponent,
+    ListOfAllComponent,
+    ApartmentListComponent,
   ],
   imports: [
     CommonModule,

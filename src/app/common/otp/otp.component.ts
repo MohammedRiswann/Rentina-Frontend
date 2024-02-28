@@ -31,7 +31,7 @@ export class OtpComponent implements OnInit {
     private jwtService: jwtToken,
     private activatedRoute: ActivatedRoute
   ) {}
-
+  sellermsg: string = '';
   userdata: any;
   errorr: boolean = false;
   private baseUrl = 'http://localhost:2000';
@@ -81,17 +81,16 @@ export class OtpComponent implements OnInit {
         if (response.success) {
           localStorage.setItem('type', response.type);
           if (response.type === 'user') {
-            console.log('main');
-
             this.jwtService.setToken(response.token);
             this.routes.navigate(['']);
           } else if (response.type === 'seller') {
-            console.log('else');
-
             localStorage.setItem('type', response.type);
             console.log('otp success in else');
-            this.jwtService.setToken(response.token);
-            this.routes.navigate(['seller/home']);
+            console.log(response.message);
+
+            this.sellermsg = response.message;
+
+            // this.jwtService.setToken(response.token);
           }
         }
       },

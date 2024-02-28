@@ -18,4 +18,7 @@ export class ApartmentService {
       `${this.apiUrl}/sellers/apartments-list/${id}`
     );
   }
+  getLand(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/sellers/lands-list`);
+  }
 }

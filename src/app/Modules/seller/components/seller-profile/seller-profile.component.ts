@@ -42,7 +42,7 @@ export class SellerProfileComponent implements OnInit {
     this.service.getProfile().subscribe((response) => {
       // console.log(response[0].profile[0]);
       this.sellerData = response[0];
-      // console.log(this.sellerData);
+      console.log(this.sellerData);
       this.sellerProfile = response[0].profile[0];
       this.sellerProfileForm.controls['firstName'].setValue(
         this.sellerData.firstName || ''

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller Verification/Approval</title>
+    <style>
+      /* Table-like styling for seller details */
+      .seller-details {
+        display: table;
+        width: 100%; /* Adjust width as needed */
+        border-collapse: collapse;
+        margin-bottom: 15px;
+      }
+      .seller-details label,
+      .seller-details span,
+      .seller-details a {
+        display: table-cell;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .seller-details label {
+        font-weight: bold;
+        text-align: right;
+        width: 20%; /* Adjust label width as needed */
+      }
+      .seller-details a {
+        text-decoration: none;
+        color: #000;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        margin-top: 10px;
+        display: block;
+        width: 100%; /* Adjust button width as needed */
+        padding: 10px;
+        background-color: #4caf50; /* Green color */
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body *ngFor="let sellers of sellers">
+    <h1>Seller Verification/Approval</h1>
+    <div class="seller-details">
+      <label for="firstName">First Name:</label>
+      <span id="firstName">{{ sellers.firstName }}</span>
+    </div>
+    <div class="seller-details">
+      <label for="lastName">Last Name:</label>
+      <span id="lastName">{{ sellers.lastName }}</span>
+    </div>
+    <div class="seller-details">
+      <label for="email">Email:</label>
+      <span id="email">{{ sellers.email }}</span>
+    </div>
+    <div class="seller-details">
+      <label for="phone">Phone Number:</label>
+      <span id="phone">{{ sellers.phone }}</span>
+    </div>
+    <div class="seller-details">
+      <label for="profileImage">Profile Image:</label>
+      <a href="{{ sellers.profileImage }}">View Image</a>
+    </div>
+    <button (click)="confirmApproval(sellers._id)">Approve Seller</button>
+  </body>
+</html>
