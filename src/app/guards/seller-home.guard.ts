@@ -12,7 +12,7 @@ export class AuthguardSeller implements CanActivate {
     if (token) {
       return true;
     } else {
-      this.router.navigate(['/seller-login']);
+      this.router.navigate(['/seller/login']);
       return false;
     }
   }

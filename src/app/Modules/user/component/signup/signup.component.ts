@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../common/services/user.service';
 import { Router } from '@angular/router';
 import { UserDataService } from '../../../../common/services/userdata.service';
 import { jwtToken } from '../../../../common/services/jwt.service';
-import { OtpService } from '../../../../common/services/otp.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,11 +12,11 @@ import { OtpService } from '../../../../common/services/otp.service';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-
   submitted = false;
-
+  loading = false;
   msg: any;
   msgg: any;
+
   constructor(
     private fb: FormBuilder,
     private service: UserService,
@@ -44,6 +42,7 @@ export class RegisterComponent {
   }
   onSubmit() {
     // Submit the form data to your backend service
+    this.loading = true;
     this.submitted = true;
     console.log('muneeeee');
     console.log(this.submitted);

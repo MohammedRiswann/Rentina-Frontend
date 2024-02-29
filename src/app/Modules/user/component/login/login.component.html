@@ -15,6 +15,24 @@
               formControlName="phone"
               placeholder="Enter phone number"
             />
+            <!-- Show validation message for phone -->
+            <div
+              *ngIf="
+                loginForm.get('phone')?.invalid &&
+                loginForm.get('phone')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="loginForm.get('phone')?.errors?.['required']"
+                >Phone number is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="loginForm.get('phone')?.errors?.['pattern']"
+                >Invalid phone number</small
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -28,26 +46,50 @@
               class="form-control bg-input-color"
               id="password"
               formControlName="password"
-              required
               placeholder="Enter Password"
             />
+            <!-- Show validation message for password -->
+            <div
+              *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="loginForm.get('password')?.errors?.['required']"
+                >Password is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="loginForm.get('password')?.errors?.['pattern']"
+                >Password must have at least 8 characters, including one
+                uppercase letter, one lowercase letter, one number, and one
+                special character</small
+              >
+            </div>
           </div>
           <p class="text-danger">{{ msg }}</p>
+          <p>
+            <!-- Button and other content -->
+          </p>
 
           <div class="d-flex justify-content-center">
             <button
               type="submit"
               class="btn btn-primary d-flex col-md-4 d-flex justify-content-center"
               (click)="onSubmit()"
+              [disabled]="loginForm.invalid"
             >
-              LOGINs
+              <span *ngIf="!loading" style="color: orangered">Register</span>
+              <span *ngIf="loading" style="color: white">Loading...</span>
             </button>
           </div>
 
           <p class="text-center mb-5">
-            Hey , New to Rentina ?
-            <a [routerLink]="['/user/signup']" class="text">click here</a> to
-            Register
+            Hey, New to Rentina?
+            <a [routerLink]="['/user/register']" class="text">Click here</a> to
+            register
           </p>
         </div>
       </div>

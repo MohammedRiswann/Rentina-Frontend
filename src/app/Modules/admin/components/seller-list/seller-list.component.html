@@ -1,55 +1,100 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-  <div
-    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+<!-- Seller List -->
+<div class="card">
+  <h4
+    style="
+      font-size: 43px;
+      font-weight: 900;
+      color: orangered;
+      text-align: center;
+      padding: 30px;
+    "
   >
-    <h1 class="h2">Dashboard</h1>
-  </div>
+    Seller's List
+  </h4>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- List group-->
+          <ul class="list-group shadow">
+            <!-- list group item-->
+            <li class="list-group-item" *ngFor="let seller of sellers">
+              <!-- Custom content-->
+              <div
+                class="media align-items-lg-center flex-column flex-lg-row p-3"
+              >
+                <div class="media-body order-2 order-lg-1">
+                  <!-- Replace with seller details -->
+                  <h5 class="mt-0 font-weight-bold mb-2">
+                    {{ seller.firstName }} {{ seller.lastName }}
+                  </h5>
+                  <p class="font-italic text-muted mb-0 small">
+                    {{ seller.email }}
+                  </p>
+                  <p class="font-italic text-muted mb-0 small">
+                    {{ seller.phone }}
+                  </p>
+                  <div
+                    class="d-flex align-items-center justify-content-between mt-1"
+                  >
+                    <h6 class="font-weight-bold my-2">{{ seller.price }}</h6>
+                    <!-- Replace with seller rating -->
+                    <ul class="list-inline small"></ul>
+                    <button
+                      [routerLink]="['/admin/seller-profile']"
+                      [queryParams]="{ id: seller._id }"
+                      style="
+                        background-color: orangered;
+                        color: white;
+                        border: 2px solid orangered;
+                        padding: 5px;
+                        border-radius: 4px;
+                        width: 120px;
+                      "
+                    >
+                      Profile
+                    </button>
+                    <button
+                      [routerLink]="['/admin/apartments-list']"
+                      [queryParams]="{ id: seller._id }"
+                      style="
+                        background-color: orangered;
+                        color: white;
+                        border: 2px solid orangered;
+                        padding: 5px;
+                        border-radius: 4px;
+                        width: 120px;
+                      "
+                    >
+                      Apartments
+                    </button>
+                    <button
+                      [routerLink]="['/admin/lands-list']"
+                      [queryParams]="{ id: seller._id }"
+                      style="
+                        background-color: orangered;
+                        color: white;
+                        border: 2px solid orangered;
+                        padding: 5px;
+                        border-radius: 4px;
+                        width: 120px;
+                      "
+                    >
+                      Lands
+                    </button>
+                  </div>
 
-  <!-- Seller List -->
-  <div class="card">
-    <div class="card-header">Seller List</div>
-    <div class="card-body">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let seller of sellers">
-          {{ seller.firstName }}
-          <div class="btn-group mt-2" role="group">
-            <button
-              type="button"
-              class="btn btn-sm btn-primary"
-              [routerLink]="['/admin/seller-profile']"
-              [queryParams]="{ id: seller._id }"
-            >
-              <i class="fas fa-user"></i> Profile
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm btn-success"
-              [routerLink]="['/admin/lands-list']"
-              [queryParams]="{ id: seller._id }"
-            >
-              <i class="fas fa-home"></i> Properties
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm btn-info"
-              [routerLink]="['/admin/apartments-list']"
-              [queryParams]="{ id: seller._id }"
-            >
-              <i class="fas fa-building"></i> Apartments
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm"
-              (click)="toggleBlock(seller._id)"
-            >
-              {{ seller.blocked ? "Unblock" : "Block" }}
-            </button>
-          </div>
-        </li>
-      </ul>
+                  <!-- End -->
+
+                  <!-- End -->
+
+                  <!-- End -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- Additional components and content -->
-  <!-- Add additional components and content here -->
-</main>
+</div>

@@ -1,11 +1,11 @@
-<section class="vh-100" style="background-color: #f4f5f7">
-  <div class="container py-5 h-100" style="padding: 30px">
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0">
         <div class="card mb-3" style="border-radius: 0.5rem">
           <div class="row g-0" style="padding: 20px">
+            <!-- Update with seller's name and role -->
             <h5>{{ sellerProfile.firstName }} {{ sellerProfile.lastName }}</h5>
-            <p>{{ sellerProfile.role }}</p>
           </div>
           <div class="col-md-8">
             <div class="card-body p-4">
@@ -14,10 +14,12 @@
               <div class="row pt-1">
                 <div class="col-6 mb-3">
                   <h6>Email</h6>
+                  <!-- Update with seller's email -->
                   <p class="text-muted">{{ sellerProfile.email }}</p>
                 </div>
                 <div class="col-6 mb-3">
                   <h6>Phone</h6>
+                  <!-- Update with seller's phone -->
                   <p class="text-muted">{{ sellerProfile.phone }}</p>
                 </div>
               </div>
@@ -25,7 +27,7 @@
               <hr class="mt-0 mb-4" />
               <div class="row pt-1">
                 <div class="col-6 mb-3">
-                  <h6>Verified</h6>
+                  Blocked : {{ sellerProfile.isBlocked }}
                   <p class="text-muted"></p>
                 </div>
               </div>
@@ -40,17 +42,11 @@
 
 <style>
   .gradient-custom {
-    background: #f6d365;
-
-    background: -webkit-linear-gradient(
-      to right bottom,
-      rgba(246, 211, 101, 1),
-      rgba(253, 160, 133, 1)
-    );
-
+    background: orangered;
+    background: -webkit-linear-gradient(to right bottom, orangered, orangered);
     background: linear-gradient(
       to right bottom,
-      rgba(246, 211, 101, 1),
+      orangered,
       rgba(253, 160, 133, 1)
     );
   }

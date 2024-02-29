@@ -11,6 +11,7 @@ import { UserDataService } from 'src/app/common/services/userdata.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  loading = false;
   registerForm!: FormGroup;
   submitted = false;
   msg: any;
@@ -38,13 +39,12 @@ export class SignupComponent {
   onSubmit() {
     console.log('clicked');
 
+    this.loading = true;
     this.submitted = true;
-    console.log(this.registerForm.value);
 
     if (this.registerForm.valid) {
-      console.log('hello');
       const one = this.registerForm.value;
-      console.log(one);
+      console.log('append');
 
       this.formdata.append('firstName', one.firstName);
       this.formdata.append('lastName', one.lastName);
@@ -60,19 +60,19 @@ export class SignupComponent {
       this.serv.registerSeller(this.formdata).subscribe({
         next: (response) => {
           if (response.success) {
-            console.log('successful reponse');
+            console.log('success');
+
             const token = response.token;
             localStorage.setItem('token', token);
-
             this.otpService.isRegistrationTrue();
             this.otpService.setUserData(this.registerForm.value);
-
             this.routes.navigate(['otp-verification'], {
               queryParams: { isUser: false },
             });
           }
         },
         error: (error) => {
+          this.loading = false;
           this.msgg = error.error.message;
         },
       });
@@ -87,10 +87,9 @@ export class SignupComponent {
     if (this.selectedfile.length < 1) {
       if (event.target.files.length > 0) {
         this.selectedfile.push(event.target.files[0]);
-        console.log(this.selectedfile);
       }
     } else {
-      alert('only one file u can choose');
+      alert('You can only choose one Picture!');
     }
   }
 }

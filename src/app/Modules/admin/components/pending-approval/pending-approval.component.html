@@ -1,70 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seller Verification/Approval</title>
-    <style>
-      /* Table-like styling for seller details */
-      .seller-details {
-        display: table;
-        width: 100%; /* Adjust width as needed */
-        border-collapse: collapse;
-        margin-bottom: 15px;
-      }
-      .seller-details label,
-      .seller-details span,
-      .seller-details a {
-        display: table-cell;
-        padding: 10px;
-        border: 1px solid #ddd;
-      }
-      .seller-details label {
-        font-weight: bold;
-        text-align: right;
-        width: 20%; /* Adjust label width as needed */
-      }
-      .seller-details a {
-        text-decoration: none;
-        color: #000;
-      }
-      h1 {
-        text-align: center;
-      }
-      button {
-        margin-top: 10px;
-        display: block;
-        width: 100%; /* Adjust button width as needed */
-        padding: 10px;
-        background-color: #4caf50; /* Green color */
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body *ngFor="let sellers of sellers">
-    <h1>Seller Verification/Approval</h1>
-    <div class="seller-details">
-      <label for="firstName">First Name:</label>
-      <span id="firstName">{{ sellers.firstName }}</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Rentina</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sellers" routerLinkActive="active"
+            >Sellers</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/pending-list"
+            routerLinkActive="active"
+            >Pending List</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active"
+            >Users</a
+          >
+        </li>
+      </ul>
     </div>
-    <div class="seller-details">
-      <label for="lastName">Last Name:</label>
-      <span id="lastName">{{ sellers.lastName }}</span>
+  </div>
+</nav>
+
+<div class="container" style="padding: 100px">
+  <h1
+    class="orange-text text-center"
+    style="padding: 20px; font-weight: 700; color: orangered"
+  >
+    Pending Approval
+  </h1>
+  <div class="table-responsive">
+    <table
+      class="table table-bordered table-striped table-hover"
+      style="border-color: orangered; border: 2px solid orangered"
+    >
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Profile Image</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let seller of sellers">
+          <td>{{ seller.firstName }}</td>
+          <td>{{ seller.lastName }}</td>
+          <td>{{ seller.email }}</td>
+          <td>{{ seller.phone }}</td>
+          <td>
+            <img
+              [src]="seller.profileImage"
+              alt="Profile Image"
+              style="max-width: 100px; max-height: 100px"
+            />
+          </td>
+          <td>
+            <button
+              class="btn btn-success"
+              style="
+                color: white;
+                background-color: orangered;
+                border: 2px solid orangered;
+                border-radius: 5px;
+              "
+              (click)="confirmApproval(seller._id)"
+            >
+              Approve Seller
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="no-sellers" *ngIf="sellers.length === 0">
+      No sellers to list here.
     </div>
-    <div class="seller-details">
-      <label for="email">Email:</label>
-      <span id="email">{{ sellers.email }}</span>
-    </div>
-    <div class="seller-details">
-      <label for="phone">Phone Number:</label>
-      <span id="phone">{{ sellers.phone }}</span>
-    </div>
-    <div class="seller-details">
-      <label for="profileImage">Profile Image:</label>
-      <a href="{{ sellers.profileImage }}">View Image</a>
-    </div>
-    <button (click)="confirmApproval(sellers._id)">Approve Seller</button>
-  </body>
-</html>
+  </div>
+</div>

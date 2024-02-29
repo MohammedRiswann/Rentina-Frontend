@@ -22,9 +22,9 @@ export class OtpComponent implements OnInit {
   otp6: string = '';
   error: string = '';
   userType = 'users';
+  loading = false;
 
   constructor(
-    private http: HttpClient,
     private userDataService: UserDataService,
     private routes: Router,
     private otpService: OtpService,
@@ -34,13 +34,11 @@ export class OtpComponent implements OnInit {
   sellermsg: string = '';
   userdata: any;
   errorr: boolean = false;
-  private baseUrl = 'http://localhost:2000';
 
   ngOnInit(): void {
     // Subscribe to query params (isUsers)
     this.activatedRoute.queryParamMap.subscribe({
       next: (data) => {
-        console.log(data);
         if (data.get('isUser') == 'true') {
           this.userType = 'users';
         } else {
@@ -50,11 +48,8 @@ export class OtpComponent implements OnInit {
     });
 
     this.userDataService.userDataSubject.subscribe((data) => {
-      console.log(data, 'userdata');
-
       this.userdata = data;
     });
-    console.log(this.userdata);
   }
   // function for autonext in the otp inputs
 
@@ -69,15 +64,12 @@ export class OtpComponent implements OnInit {
   // verifying the otp
 
   verifyOTP() {
-    console.log(this.userdata, 'user daata');
+    this.loading = true;
 
     const otp = `${this.otp1}${this.otp2}${this.otp3}${this.otp4}${this.otp5}${this.otp6}`;
-    console.log(otp);
 
     this.otpService.verifyOtp(this.userdata, otp, this.userType).subscribe({
       next: (response) => {
-        console.log('success');
-
         if (response.success) {
           localStorage.setItem('type', response.type);
           if (response.type === 'user') {
@@ -85,17 +77,18 @@ export class OtpComponent implements OnInit {
             this.routes.navigate(['']);
           } else if (response.type === 'seller') {
             localStorage.setItem('type', response.type);
-            console.log('otp success in else');
-            console.log(response.message);
+            this.loading = false;
+            confirm(
+              "OTP verification completed Successfully , By this you will be redirected to login page . After Admin's careful approval you will get email notification."
+            );
 
-            this.sellermsg = response.message;
-
-            // this.jwtService.setToken(response.token);
+            this.routes.navigate(['/seller/login']);
           }
         }
       },
       error: (error) => {
         console.log(error);
+        this.loading = false;
         this.errorr = true;
       },
     });

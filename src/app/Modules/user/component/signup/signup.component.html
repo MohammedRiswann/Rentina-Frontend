@@ -154,8 +154,10 @@
         <button
           type="submit"
           class="btn btn-primary hover:btn-red hover:text-white d-flex col-md-4 d-flex justify-content-center"
+          [disabled]="registerForm.invalid"
         >
-          Register
+          <span *ngIf="!loading" style="color: white">Register</span>
+          <span *ngIf="loading" style="color: white">Loading...</span>
         </button>
       </div>
     </form>

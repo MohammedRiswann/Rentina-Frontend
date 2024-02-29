@@ -13,16 +13,20 @@ import { EditDetailsComponent } from './components/edit-details/edit-details.com
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
 import { ListOfAllComponent } from './list-of-all/list-of-all.component';
 import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
+import { Authguard } from 'src/app/guards/home.guard';
+import { loginGuard } from 'src/app/guards/login.guard';
 
 const routes: Routes = [
   {
     path: 'register',
+    canActivate: [loginGuard],
     component: SignupComponent,
   },
   {
     path: 'home',
-    canActivate: [AuthguardSeller],
+
     component: HomeComponentSeller,
+    canActivate: [AuthguardSeller],
     children: [
       {
         path: 'profile',
@@ -41,20 +45,28 @@ const routes: Routes = [
   },
   {
     path: 'Property-details/:id',
+    canActivate: [AuthguardSeller],
     component: AllDetailsComponent,
   },
   {
     path: 'login',
+    canActivate: [loginGuard],
     component: LogincomponentSeller,
   },
-  { path: 'add-products', component: AddProductsComponent },
+  {
+    path: 'add-products',
+    component: AddProductsComponent,
+    canActivate: [AuthguardSeller],
+  },
   {
     path: 'add-lands',
+    canActivate: [AuthguardSeller],
     component: AddLandsComponent,
   },
 
   {
     path: 'edit-details/:id',
+    canActivate: [AuthguardSeller],
     component: EditDetailsComponent,
   },
 

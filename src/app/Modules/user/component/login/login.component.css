@@ -47,10 +47,6 @@ input[type="password"] {
   cursor: pointer;
   color: orangered;
 }
-.btn-primary:hover {
-  background-color: #ff5500;
-  color: white;
-}
 
 p {
   text-align: center;

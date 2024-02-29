@@ -13,6 +13,8 @@ export class LoginComponent {
   loginForm!: FormGroup;
   errormsg: any = '';
   msg: any = '';
+  loading = false;
+
   constructor(
     private form: FormBuilder,
     private router: Router,
@@ -21,19 +23,29 @@ export class LoginComponent {
   ) {}
   ngOnInit(): void {
     this.loginForm = this.form.group({
-      phone: ['', Validators.required],
-      password: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'
+          ),
+        ],
+      ],
     });
   }
 
   onSubmit() {
-    console.log('clicked');
-    const { phone, password } = this.loginForm.value;
-    console.log('one');
+    this.loading = true;
 
+    const { phone, password } = this.loginForm.value;
     this.service.login(phone, password).subscribe({
       next: (response) => {
         if (response.isAdmin) {
+          console.log('hello');
+          this.token.setToken(response.token);
+          localStorage.setItem('type', response.type);
           this.router.navigate(['/admin/home']);
         } else {
           this.token.setToken(response.token);
@@ -43,6 +55,7 @@ export class LoginComponent {
         }
       },
       error: (response) => {
+        this.loading = false;
         this.msg = response.error.message;
       },
     });

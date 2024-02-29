@@ -17,4 +17,8 @@ export class BlockService {
       {}
     );
   }
+  sendApprovalEmail(sellerId: string): Observable<any> {
+    const requestBody = { sellerId };
+    return this.http.post<any>(`${this.apiUrl}/admin/send-email`, requestBody);
+  }
 }

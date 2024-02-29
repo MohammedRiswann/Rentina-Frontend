@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { SellerListService } from '../../services/seller-list.service';
 import { BlockService } from '../../services/block.service';
 
@@ -15,6 +15,10 @@ export class PendingApprovalComponent implements OnInit {
   sellers: any;
 
   ngOnInit(): void {
+    this.getSellers();
+  }
+
+  getSellers() {
     this.service.getPendingSellers().subscribe((response) => {
       console.log(response);
       this.sellers = response;
@@ -25,5 +29,9 @@ export class PendingApprovalComponent implements OnInit {
     this.appService.approveUser(sellerID).subscribe((response) => {
       console.log(response);
     });
+    this.appService.sendApprovalEmail(sellerID).subscribe((emailResponse) => {
+      console.log(emailResponse);
+    });
+    this.getSellers();
   }
 }
