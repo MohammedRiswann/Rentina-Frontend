@@ -15,6 +15,7 @@ import { ListOfAllComponent } from './list-of-all/list-of-all.component';
 import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
 import { Authguard } from 'src/app/guards/home.guard';
 import { loginGuard } from 'src/app/guards/login.guard';
+import { LandsDetailsComponent } from './components/lands-details/lands-details.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
     path: 'Property-details/:id',
     canActivate: [AuthguardSeller],
     component: AllDetailsComponent,
+  },
+  {
+    path: 'lands-details/:id',
+    canActivate: [AuthguardSeller],
+    component: LandsDetailsComponent,
   },
   {
     path: 'login',

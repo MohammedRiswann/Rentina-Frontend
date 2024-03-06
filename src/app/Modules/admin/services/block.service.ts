@@ -21,4 +21,10 @@ export class BlockService {
     const requestBody = { sellerId };
     return this.http.post<any>(`${this.apiUrl}/admin/send-email`, requestBody);
   }
+  toggleSellerBlockStatus(sellerId: string, status: string): Observable<any> {
+    return this.http.put<any>(
+      `${this.apiUrl}/sellers/block-unblock/${sellerId}`,
+      { status }
+    );
+  }
 }

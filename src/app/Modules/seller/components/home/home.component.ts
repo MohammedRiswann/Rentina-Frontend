@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ProductserviceService } from '../../services/productservice.service';
+
 import { Router } from '@angular/router';
+import { SellerService } from '../../services/seller-id.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponentSeller {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sellerService: SellerService) {}
+
   navigateTo(route: string) {
-    this.router.navigate(['route']);
+    const sellerId = this.sellerService.getSellerId();
+    this.router.navigate([route], { queryParams: { sellerId: sellerId } });
+  }
+  onLog() {
+    localStorage.clear();
+    this.router.navigate(['/seller/login']);
   }
 }

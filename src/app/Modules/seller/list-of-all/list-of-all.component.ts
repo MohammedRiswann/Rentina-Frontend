@@ -21,15 +21,20 @@ export class ListOfAllComponent {
   }
 
   getLands(): void {
-    this.apartmentService.getLand().subscribe((response) => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID not found');
+      return;
+    }
+    this.apartmentService.getLand(userId).subscribe((response) => {
       console.log(response);
       this.lands = response;
     });
   }
   deleteLands(id: string) {
-    this.apartmentService.deleteApartment(id).subscribe((response) => {
+    this.apartmentService.deleteLand(id).subscribe((response) => {
       console.log(id);
-      alert('Property Deleted Succesfully..');
+      alert('Land Deleted Succesfully..');
       console.log('deleted succesfully');
       this.getLands();
     });
@@ -38,6 +43,6 @@ export class ListOfAllComponent {
   viewDetails(landId: string): void {
     console.log('hell');
 
-    this.router.navigate([`/seller/Property-details/${landId}`]);
+    this.router.navigate([`/seller/lands-details/${landId}`]);
   }
 }

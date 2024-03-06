@@ -10,15 +10,20 @@ export class ApartmentService {
 
   constructor(private http: HttpClient) {}
 
-  getApartments(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/sellers/apartments-list`);
+  getApartments(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/sellers/apartments-list/${userId}`
+    );
   }
   deleteApartment(id: string): Observable<any> {
     return this.http.delete<any>(
       `${this.apiUrl}/sellers/apartments-list/${id}`
     );
   }
-  getLand(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/sellers/lands-list`);
+  getLand(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/sellers/lands-list/${userId}`);
+  }
+  deleteLand(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/sellers/lands-delete/${id}`);
   }
 }

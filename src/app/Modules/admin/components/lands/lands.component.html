@@ -89,7 +89,7 @@
   </style>
 
   <body>
-    <h1>List of Apartments</h1>
+    <h1>List of Lands</h1>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -108,10 +108,7 @@
             <td>{{ apartment.price }}</td>
             <td>{{ apartment.location }}</td>
             <td>
-              <button
-                class="btn-delete"
-                (click)="deleteApartments(apartment._id)"
-              >
+              <button class="btn-delete" (click)="deleteLands(apartment._id)">
                 Delete
               </button>
             </td>

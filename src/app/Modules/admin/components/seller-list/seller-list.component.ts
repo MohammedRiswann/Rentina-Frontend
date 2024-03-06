@@ -24,14 +24,12 @@ export class SellerListComponent implements OnInit {
       this.sellers = response;
     });
   }
-
-  toggleBlock(sellerId: string) {
-    const confirmation = confirm(
-      `Are you sure you want to ${
-        this.sellers.find((seller: any) => seller._id === sellerId).blocked
-          ? 'unblock'
-          : 'block'
-      } this seller?`
-    );
+  toggleBlockStatus(sellerId: string, status: string) {
+    this.blockService
+      .toggleSellerBlockStatus(sellerId, status)
+      .subscribe((response) => {
+        console.log(response); // Handle the response as needed
+        this.getSellers();
+      });
   }
 }

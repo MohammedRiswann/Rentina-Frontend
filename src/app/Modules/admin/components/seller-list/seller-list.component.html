@@ -82,13 +82,20 @@
                     >
                       Lands
                     </button>
+                    <div>
+                      <button
+                        (click)="
+                          toggleBlockStatus(
+                            seller._id,
+                            seller.isBlocked ? 'unblock' : 'block'
+                          )
+                        "
+                        class="btn btn-danger"
+                      >
+                        {{ seller.isBlocked ? "Unblock" : "Block" }}
+                      </button>
+                    </div>
                   </div>
-
-                  <!-- End -->
-
-                  <!-- End -->
-
-                  <!-- End -->
                 </div>
               </div>
             </li>

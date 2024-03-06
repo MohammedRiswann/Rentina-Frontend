@@ -26,4 +26,12 @@ export class ApartmentsService {
   viewLandsDetails(landId: string) {
     return this.http.get<any[]>(`${this.apiUrl}/admin/land-details/${landId}`);
   }
+  deleteApartment(apartmentId: string) {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/admin/delete-apartment/${apartmentId}`
+    );
+  }
+  deleteLands(landId: string): Observable<any[]> {
+    return this.http.delete<any>(`${this.apiUrl}/admin/delete-land/${landId}`);
+  }
 }

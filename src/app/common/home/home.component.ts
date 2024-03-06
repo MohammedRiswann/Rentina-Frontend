@@ -23,6 +23,7 @@ export class HomeComponent {
 
   onLog() {
     localStorage.clear();
+    this.router.navigate(['/user/login']);
   }
 
   onSearch() {

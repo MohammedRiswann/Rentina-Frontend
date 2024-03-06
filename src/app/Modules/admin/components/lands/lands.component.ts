@@ -34,13 +34,13 @@ export class LandsComponent {
     });
   }
 
-  deleteApartments(id: string) {
-    // this.apartmentService.deleteApartment(id).subscribe((response) => {
-    //   console.log(id);
-    //   alert('Property Deleted Succesfully..');
-    //   console.log('deleted succesfully');
-    //   this.getApartments(this.userId);
-    // });
+  deleteLands(id: string) {
+    console.log('hello');
+
+    this.apartmentService.deleteLands(id).subscribe((response) => {
+      confirm('Do you want to delete this land , Are you sure ?');
+      this.getLands(this.userId);
+    });
   }
 
   viewDetails(apartmentId: string) {

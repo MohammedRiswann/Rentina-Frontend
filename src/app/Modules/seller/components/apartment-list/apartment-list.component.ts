@@ -21,7 +21,12 @@ export class ApartmentListComponent {
   }
 
   getApartments(): void {
-    this.apartmentService.getApartments().subscribe((response) => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID not found');
+      return;
+    }
+    this.apartmentService.getApartments(userId).subscribe((response) => {
       console.log(response);
       this.apartments = response;
     });
@@ -37,6 +42,7 @@ export class ApartmentListComponent {
 
   viewDetails(apartmentId: string): void {
     console.log('hell');
+    console.log(apartmentId);
 
     this.router.navigate([`/seller/Property-details/${apartmentId}`]);
   }

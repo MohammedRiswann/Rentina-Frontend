@@ -28,18 +28,13 @@ export class LogincomponentSeller {
   }
 
   onSubmit() {
-    console.log('clicked');
     const { phone, password } = this.loginForm.value;
-    console.log(phone);
-
-    console.log('one');
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
-        console.log(response.token);
         this.token.setToken(response.token);
         localStorage.setItem('type', response.type);
-        this.msg = response.message;
+        localStorage.setItem('userId', response.seller._id);
         this.router.navigate(['/seller/home']);
       },
       error: (response) => {

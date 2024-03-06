@@ -20,6 +20,7 @@ import { SellerProfileComponent } from './components/seller-profile/seller-profi
 import { InterceptorService } from './common-Interceptor/interceptor.service';
 import { ListOfAllComponent } from './list-of-all/list-of-all.component';
 import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
+import { LandsDetailsComponent } from './components/lands-details/lands-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ApartmentListComponent } from './components/apartment-list/apartment-li
     SellerProfileComponent,
     ListOfAllComponent,
     ApartmentListComponent,
+    LandsDetailsComponent,
   ],
   imports: [
     CommonModule,
