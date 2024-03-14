@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div
   class="image-wrapper d-flex align-items-center min-vh-100"
   style="overflow: hidden"
@@ -11,7 +12,6 @@
       border-image: fill 0 linear-gradient(#0001, #000);
     "
   >
-    <button (click)="onLog()">log out</button>
     <div class="col-md-5 text-white pt-5 ps-5 text-start">
       <h1
         class="display-6 fw-bold"
@@ -53,7 +53,6 @@
             width: 100px;
             border-radius: 5px;
           "
-          [(ngModel)]="searchQuery"
         />
         <div class="input-group-append">
           <button

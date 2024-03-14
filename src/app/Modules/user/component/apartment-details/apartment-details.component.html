@@ -1,0 +1,144 @@
+<body>
+  <!--$%adsense%$-->
+  <main class="cd__main">
+    <!-- Start DEMO HTML (Use the following code into your project)-->
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-5">
+          <div>
+            <img
+              class="w-100"
+              [src]="selectedImage || details.images[0]"
+              class="main-img"
+            />
+
+            <div class="row my-3 previews">
+              <div
+                class="col-md-3"
+                *ngFor="let image of details.images; let i = index"
+              >
+                <img
+                  class="preview-img"
+                  [src]="image"
+                  (click)="selectImage(image)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          <div class="main-description px-2">
+            <div class="product-title text-bold my-3" style="color: orangered">
+              {{ details.name }}
+            </div>
+
+            <div class="price-area my-4">
+              <p class="new-price text-bold mb-1">
+                <span>$ </span>{{ details.price }} <span>/-</span>
+              </p>
+              <p class="text-secondary mb-1">
+                (Additional tax may apply on Payment)
+              </p>
+            </div>
+
+            <div class="buttons d-flex my-5">
+              <div class="block">
+                <a
+                  href="#"
+                  class="shadow btn custom-btn"
+                  style="background-color: orangered; border-radius: 5px"
+                  >Wishlist</a
+                >
+              </div>
+              <div class="block">
+                <button
+                  class="shadow btn custom-btn"
+                  style="background-color: orangered; border-radius: 5px"
+                >
+                  Pay Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-details my-4">
+            <p class="details-title text-color mb-1">Product Details</p>
+            <p class="description">
+              {{ details.description }}
+            </p>
+          </div>
+
+          <div class="delivery my-4">
+            <p class="font-weight-bold mb-0">
+              <span><i class="fa-solid fa-truck"></i></span>
+              <b>Features</b>
+            </p>
+            <p class="text-secondary">{{ details.features }}</p>
+          </div>
+          <div class="delivery-options my-4">
+            <p class="font-weight-bold mb-0">
+              <span><i class="fa-solid fa-filter"></i></span>
+              <b>Location</b>
+            </p>
+            <p class="text-secondary">{{ details.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container similar-products my-4">
+      <hr />
+      <p class="display-5">Similar Apartments</p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="similar-product">
+            <img
+              class="w-100"
+              src="https://source.unsplash.com/gsKdPcIyeGg"
+              alt="Preview"
+            />
+            <p class="title">Lovely black dress</p>
+            <p class="price">$100</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="similar-product">
+            <img
+              class="w-100"
+              src="https://source.unsplash.com/sg_gRhbYXhc"
+              alt="Preview"
+            />
+            <p class="title">Lovely Dress with patterns</p>
+            <p class="price">$85</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="similar-product">
+            <img
+              class="w-100"
+              src="https://source.unsplash.com/gJZQcirK8aw"
+              alt="Preview"
+            />
+            <p class="title">Lovely fashion dress</p>
+            <p class="price">$200</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="similar-product">
+            <img
+              class="w-100"
+              src="https://source.unsplash.com/qbB_Z2pXLEU"
+              alt="Preview"
+            />
+            <p class="title">Lovely red dress</p>
+            <p class="price">$120</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- END EDMO HTML (Happy Coding!)-->
+  </main>
+</body>

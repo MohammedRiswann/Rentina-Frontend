@@ -14,6 +14,9 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 import { SellersModule } from './Modules/seller/sellers.module';
 import { UserRoutingModule } from './Modules/user/user-routing.module';
 import { AdminModule } from './Modules/admin/admin.module';
+import { ApartmentDetailsComponent } from './Modules/user/component/apartment-details/apartment-details.component';
+import { LandsListComponent } from './Modules/user/lands-list/lands-list.component';
+import { LandDetailsComponent } from './Modules/user/land-details/land-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { AdminModule } from './Modules/admin/admin.module';
     HeaderComponent,
     LandComponent,
     NotFoundComponent,
+    ApartmentDetailsComponent,
+    LandsListComponent,
+    LandDetailsComponent,
   ],
   imports: [
     BrowserModule,

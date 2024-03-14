@@ -10,6 +10,8 @@ import { ApartmentDetailsComponent } from './components/apartment-details/apartm
 import { LandDetailsComponent } from './components/land-details/land-details.component';
 import { PendingApprovalComponent } from './components/pending-approval/pending-approval.component';
 import { AuthguardAdmin } from 'src/app/guards/admin-home.guard';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -50,6 +52,16 @@ const routes: Routes = [
   {
     path: 'pending',
     component: PendingApprovalComponent,
+    canActivate: [AuthguardAdmin],
+  },
+  {
+    path: 'user-list',
+    component: UsersListComponent,
+    canActivate: [AuthguardAdmin],
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
     canActivate: [AuthguardAdmin],
   },
 ];

@@ -27,4 +27,9 @@ export class BlockService {
       { status }
     );
   }
+  toggleUserBlockStatus(userId: string, status: string): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/admin/block-unblock/${userId}`, {
+      status,
+    });
+  }
 }

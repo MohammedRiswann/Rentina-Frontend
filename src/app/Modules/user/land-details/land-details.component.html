@@ -1,0 +1,237 @@
+<main class="cd__main">
+  <div class="container my-5 d-flex justify-content-center flex-column">
+    <div class="row">
+      <div class="col-md-5">
+        <div>
+          <img
+            class="w-100"
+            [src]="selectedImage || details.images[0]"
+            class="main-img"
+          />
+
+          <div class="row my-3 previews">
+            <div
+              class="col-md-3"
+              *ngFor="let image of details.images; let i = index"
+            >
+              <img
+                class="preview-img"
+                [src]="image"
+                (click)="selectImage(image)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="main-description px-2">
+          <div class="product-title text-bold my-3">{{ details.name }}</div>
+
+          <div class="price-area my-4">
+            <p class="new-price text-bold mb-1">
+              <span>$ : </span>{{ details.price }} <span>/-</span>
+            </p>
+          </div>
+
+          <div class="buttons d-flex my-5">
+            <div class="block">
+              <a
+                href="#"
+                class="shadow btn custom-btn"
+                style="background-color: orangered; border-radius: 5px"
+                >Wishlist</a
+              >
+            </div>
+            <div class="block">
+              <button
+                class="shadow btn custom-btn"
+                style="background-color: orangered; border-radius: 5px"
+              >
+                Connect
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-details my-4">
+          <p class="details-title text-color mb-1">Product Details</p>
+          <p class="description">{{ details.description }}</p>
+        </div>
+
+        <div class="row questions bg-light p-3">
+          <div class="col-md-1 icon">
+            <i class="fa-brands fa-rocketchat questions-icon"></i>
+          </div>
+
+          <div class="delivery my-4">
+            <p class="font-weight-bold mb-0">
+              <span><i class="fa-solid fa-truck"></i></span><b>Features</b>
+            </p>
+            <p class="text-secondary">{{ details.features }}</p>
+          </div>
+          <div class="delivery-options my-4">
+            <p class="font-weight-bold mb-0">
+              <span><i class="fa-solid fa-filter"></i></span><b>Location</b>
+            </p>
+            <p class="text-secondary">{{ details.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-12 review-form mt-5"
+      style="
+        background-color: #003366;
+        color: white;
+        max-width: 900px;
+        height: 230px;
+        padding: 10px;
+        align-items: center;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+      "
+    >
+      <h3 class="review-form-title">Your Review Is Important For Us!</h3>
+
+      <form class="review-form-inner">
+        <div class="star-rating d-flex justify-content-center">
+          <label>
+            <input
+              type="radio"
+              name="rating"
+              [(ngModel)]="review.rating"
+              value="1"
+            />
+            <span class="fa fa-star"></span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="rating"
+              [(ngModel)]="review.rating"
+              value="2"
+            />
+            <span class="fa fa-star"></span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="rating"
+              [(ngModel)]="review.rating"
+              value="3"
+            />
+            <span class="fa fa-star"></span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="rating"
+              [(ngModel)]="review.rating"
+              value="4"
+            />
+            <span class="fa fa-star"></span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="rating"
+              [(ngModel)]="review.rating"
+              value="5"
+            />
+            <span class="fa fa-star"></span>
+          </label>
+        </div>
+        <div class="d-flex col-md-12">
+          <input
+            id="comment"
+            [(ngModel)]="review.comment"
+            name="comment"
+            required
+            class="d-flex justify-content-center mt-3"
+            style="
+              width: 600px;
+              height: 50px;
+              padding: 10px;
+              border-top-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+              border: 0px;
+            "
+            placeholder="Write your review here..."
+          />
+
+          <button
+            type="submit"
+            class="review-form-button mt-3"
+            (click)="submitReview(details._id)"
+            style="
+              height: 50px;
+              width: 160px;
+              border: 0px;
+              border-top-right-radius: 5px;
+              border-bottom-right-radius: 5px;
+              background-color: orangered;
+              color: white;
+            "
+          >
+            Submit Review
+          </button>
+        </div>
+        <p>{{ messageSubmit }}</p>
+      </form>
+    </div>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <!-- CUSTOM BLOCKQUOTE -->
+            <blockquote
+              class="blockquote blockquote-custom bg-white p-5 shadow rounded position-relative"
+            >
+              <div class="blockquote-custom-icon bg-info shadow-sm">
+                <i class="fa fa-quote-left text-white"></i>
+              </div>
+              <p class="mb-0 mt-2 font-italic">
+                {{ displayedReviews[startIndex].comment }}
+              </p>
+              <footer class="blockquote-footer pt-4 mt-4 border-top">
+                Someone famous in
+                <cite title="Source Title">Source Title</cite>
+              </footer>
+              <!-- Arrow buttons -->
+              <button
+                class="arrow-button left"
+                *ngIf="isLeftVisible()"
+                (click)="movePreviousReview()"
+              >
+                <i class="fa fa-arrow-left"></i>
+              </button>
+              <button
+                class="arrow-button right"
+                *ngIf="isRightVisible()"
+                (click)="moveNextReview()"
+              >
+                <i class="fa fa-arrow-right"></i>
+              </button>
+            </blockquote>
+            <!-- END -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container similar-products my-4">
+      <hr />
+      <p class="display-5">Similar Products</p>
+
+      <div class="row">
+        <!-- Similar product cards -->
+      </div>
+    </div>
+  </div>
+</main>

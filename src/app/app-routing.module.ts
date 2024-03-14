@@ -9,6 +9,7 @@ import { Authguard } from './guards/home.guard';
 import { otpGuard } from './guards/otp.guard';
 
 import { NotFoundComponent } from './common/not-found/not-found.component';
+import { LandComponent } from './common/land/land.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,13 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [Authguard],
+
     component: HomeComponent,
+  },
+  {
+    path: 'lands',
+    canActivate: [Authguard],
+    component: LandComponent,
   },
 
   {
@@ -30,7 +36,7 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () =>
-      import('./Modules/user/component/user.module').then((e) => e.UserModule),
+      import('./Modules/user/user.module').then((e) => e.UserModule),
   },
   {
     path: 'admin',

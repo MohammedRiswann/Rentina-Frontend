@@ -5,6 +5,9 @@ import { LoginComponent } from './component/login/login.component';
 import { PropertyListComponent } from './component/property-list/property-list.component';
 import { loginGuard } from 'src/app/guards/login.guard';
 import { Authguard } from 'src/app/guards/home.guard';
+import { ApartmentDetailsComponent } from './component/apartment-details/apartment-details.component';
+import { LandsListComponent } from './lands-list/lands-list.component';
+import { LandDetailsComponent } from './land-details/land-details.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,21 @@ const routes: Routes = [
     path: 'property-list',
     canActivate: [Authguard],
     component: PropertyListComponent,
+  },
+  {
+    path: 'apartment-details',
+    canActivate: [Authguard],
+    component: ApartmentDetailsComponent,
+  },
+  {
+    path: 'lands-list',
+    canActivate: [Authguard],
+    component: LandsListComponent,
+  },
+  {
+    path: 'lands-details',
+    canActivate: [Authguard],
+    component: LandDetailsComponent,
   },
 ];
 

@@ -1,0 +1,79 @@
+<!-- Seller List -->
+<div class="card">
+  <h4
+    style="
+      font-size: 43px;
+      font-weight: 900;
+      color: orangered;
+      text-align: center;
+      padding: 30px;
+    "
+  >
+    User's List
+  </h4>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- List group-->
+          <ul class="list-group shadow">
+            <!-- list group item-->
+            <li class="list-group-item" *ngFor="let user of users">
+              <!-- Custom content-->
+              <div
+                class="media align-items-lg-center flex-column flex-lg-row p-3"
+              >
+                <div class="media-body order-2 order-lg-1">
+                  <!-- Replace with seller details -->
+                  <h5 class="mt-0 font-weight-bold mb-2">
+                    {{ user.firstName }} {{ user.lastName }}
+                  </h5>
+                  <p class="font-italic text-muted mb-0 small">
+                    {{ user.email }}
+                  </p>
+                  <p class="font-italic text-muted mb-0 small">
+                    {{ user.phone }}
+                  </p>
+                  <div
+                    class="d-flex align-items-center justify-content-between mt-1"
+                  >
+                    <!-- Replace with seller rating -->
+                    <ul class="list-inline small"></ul>
+                    <button
+                      [routerLink]="['/admin/user-profile']"
+                      [queryParams]="{ id: user._id }"
+                      style="
+                        background-color: orangered;
+                        color: white;
+                        border: 2px solid orangered;
+                        padding: 5px;
+                        border-radius: 4px;
+                        width: 120px;
+                      "
+                    >
+                      Profile
+                    </button>
+
+                    <div>
+                      <button
+                        (click)="
+                          toggleBlockStatus(
+                            user._id,
+                            user.isBlocked ? 'unblock' : 'block'
+                          )
+                        "
+                        class="btn btn-danger"
+                      >
+                        {{ user.isBlocked ? "Unblock" : "Block" }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

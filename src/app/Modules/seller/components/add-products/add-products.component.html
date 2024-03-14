@@ -137,7 +137,7 @@
   >
     <div class="container bg-white col-md-10 rounded mb-8">
       <h1 class="mb-5 register-main-text">Add Property</h1>
-      <form (ngSubmit)="addProduct()">
+      <form #productForm="ngForm" (submit)="addProduct()" novalidate>
         <div class="form-group">
           <label for="productName">Product Name:</label>
           <input
@@ -243,7 +243,13 @@
           </ul>
         </div>
 
-        <button type="submit" class="btn btn-primary">Add Product</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!productForm.form.valid || images.length < 5"
+        >
+          Add Product
+        </button>
       </form>
       <div class="alert">
         {{ msg }}

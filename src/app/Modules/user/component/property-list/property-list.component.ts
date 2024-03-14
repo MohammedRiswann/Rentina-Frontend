@@ -48,15 +48,8 @@ export class PropertyListComponent implements OnInit {
       )
       .subscribe((properties) => {
         this.filteredProperties = properties;
+        console.log(properties);
       });
-  }
-
-  deleteApartment(apartmentId: string) {
-    // Implement delete functionality
-  }
-
-  viewApartmentDetails(apartmentId: string) {
-    // Implement view details functionality
   }
 
   filter() {

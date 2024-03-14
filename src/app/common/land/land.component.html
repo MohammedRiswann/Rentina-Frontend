@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div
   class="image-wrapper d-flex align-items-center min-vh-100"
   style="overflow: hidden"
@@ -55,6 +56,7 @@
             width: 100px;
             border-radius: 5px;
           "
+          [(ngModel)]="searchQuery"
         />
         <div class="input-group-append">
           <button
@@ -68,24 +70,34 @@
               width: 190px;
               border-radius: 5px;
             "
+            (click)="onSearch()"
           >
             Search
           </button>
         </div>
       </div>
       <!-- Add the filter option here -->
+      <!-- Add the filter option here -->
       <div class="input-group mb-3 w-100">
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          style="height: 50px; border-radius: 0px"
-        >
-          <option selected>Filter by...</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Min Price"
+          [(ngModel)]="minPrice"
+        />
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Max Price"
+          [(ngModel)]="maxPrice"
+        />
       </div>
+      <select [(ngModel)]="typeQuery">
+        <option value="">All Types</option>
+        <option value="apartment">Apartment</option>
+        <option value="house">House</option>
+        <!-- Add more options for other types -->
+      </select>
     </div>
   </div>
 
@@ -145,40 +157,44 @@
             border-radius: 5px;
           "
         />
+        <!-- Add the filter option here -->
         <div class="input-group mb-3 w-100">
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            style="
-              height: 50px;
-              border-radius: 0px;
-              margin-bottom: 0px;
-              width: 50%;
-              border-radius: 5px;
-            "
-          >
-            <option selected>Filter by...</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Min Price"
+            [(ngModel)]="minPrice"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Max Price"
+            [(ngModel)]="maxPrice"
+          />
         </div>
-        <div class="input-group-append w-100">
-          <button
-            type="button"
-            class="btn btn-lg btn-orangered"
-            style="
-              height: 50px;
-              border-radius: 5px;
-              background-color: orangered;
-              color: white;
-              width: 100%;
-            "
-          >
-            Search
-          </button>
-        </div>
+        <select [(ngModel)]="typeQuery">
+          <option value="">All Types</option>
+          <option value="apartment">Rental</option>
+          <option value="house">Sale</option>
+          <!-- Add more options for other types -->
+        </select>
       </div>
+    </div>
+    <div class="input-group-append w-100">
+      <button
+        type="button"
+        class="btn btn-lg btn-orangered"
+        style="
+          height: 50px;
+          border-radius: 5px;
+          background-color: orangered;
+          color: white;
+          width: 100%;
+        "
+        (click)="onSearch()"
+      >
+        Search
+      </button>
     </div>
   </div>
 </div>

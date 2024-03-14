@@ -9,6 +9,8 @@ import { LandsComponent } from './components/lands/lands.component';
 import { ApartmentDetailsComponent } from './components/apartment-details/apartment-details.component';
 import { LandDetailsComponent } from './components/land-details/land-details.component';
 import { PendingApprovalComponent } from './components/pending-approval/pending-approval.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { PendingApprovalComponent } from './components/pending-approval/pending-
     ApartmentDetailsComponent,
     LandDetailsComponent,
     PendingApprovalComponent,
+    UsersListComponent,
+    UserProfileComponent,
   ],
   imports: [CommonModule, adminRoutingmodule],
 })
