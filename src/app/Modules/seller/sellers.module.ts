@@ -21,6 +21,7 @@ import { InterceptorService } from './common-Interceptor/interceptor.service';
 import { ListOfAllComponent } from './list-of-all/list-of-all.component';
 import { ApartmentListComponent } from './components/apartment-list/apartment-list.component';
 import { LandsDetailsComponent } from './components/lands-details/lands-details.component';
+import { PaymentApprovalComponent } from './components/payment-approval/payment-approval.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LandsDetailsComponent } from './components/lands-details/lands-details.
     ListOfAllComponent,
     ApartmentListComponent,
     LandsDetailsComponent,
+    PaymentApprovalComponent,
   ],
   imports: [
     CommonModule,

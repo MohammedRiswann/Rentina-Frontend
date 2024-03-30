@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PropertyService } from '../../Modules/user/services/propertyService.service';
 import { Router } from '@angular/router';
+import { MapOptions } from 'leaflet';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,14 @@ export class HomeComponent {
   maxPrice: number | undefined = undefined;
 
   properties: any[] = [];
+
+  options: MapOptions = {
+    layers: [
+      // Define your layers here
+    ],
+    zoom: 1,
+    center: [0, 0], // Example center coordinates
+  };
 
   onLog() {
     localStorage.clear();

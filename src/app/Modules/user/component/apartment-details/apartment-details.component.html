@@ -1,15 +1,13 @@
 <body>
-  <!--$%adsense%$-->
   <main class="cd__main">
-    <!-- Start DEMO HTML (Use the following code into your project)-->
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-md-5">
+    <div class="container" style="margin-top: 95px">
+      <div class="row ml-3">
+        <div class="col-md-4">
           <div>
             <img
-              class="w-100"
+              class="img-fluid main-img"
+              style="border-radius: 5px"
               [src]="selectedImage || details.images[0]"
-              class="main-img"
             />
 
             <div class="row my-3 previews">
@@ -21,6 +19,7 @@
                   class="preview-img"
                   [src]="image"
                   (click)="selectImage(image)"
+                  style="border-radius: 5px"
                 />
               </div>
             </div>
@@ -29,116 +28,342 @@
 
         <div class="col-md-7">
           <div class="main-description px-2">
-            <div class="product-title text-bold my-3" style="color: orangered">
+            <div class="product-title text-bold my-0" style="color: orangered">
               {{ details.name }}
             </div>
 
-            <div class="price-area my-4">
-              <p class="new-price text-bold mb-1">
-                <span>$ </span>{{ details.price }} <span>/-</span>
+            <div class="delivery-options my-0">
+              <p class="font-weight-bold mb-0">
+                <span><i class="fa-solid fa-filter"></i></span>
+                <b>Location</b>
               </p>
-              <p class="text-secondary mb-1">
-                (Additional tax may apply on Payment)
+              <p class="text-secondary">{{ details.location }}</p>
+            </div>
+            <div class="product-details my-0">
+              <p class="description">
+                {{ details.role }}
               </p>
             </div>
-
-            <div class="buttons d-flex my-5">
+            <div class="buttons d-flex my-0">
               <div class="block">
                 <a
                   href="#"
                   class="shadow btn custom-btn"
                   style="background-color: orangered; border-radius: 5px"
-                  >Wishlist</a
+                  >Add to Wishlist</a
                 >
-              </div>
-              <div class="block">
-                <button
-                  class="shadow btn custom-btn"
-                  style="background-color: orangered; border-radius: 5px"
-                >
-                  Pay Now
-                </button>
               </div>
             </div>
           </div>
-
-          <div class="product-details my-4">
-            <p class="details-title text-color mb-1">Product Details</p>
-            <p class="description">
-              {{ details.description }}
+          <div
+            class="price-area my-4"
+            style="
+              background-color: rgb(244, 244, 244);
+              padding: 20px;
+              border-radius: 5px;
+            "
+          >
+            <p class="new-price text-bold mb-1">
+              <span>Rs: </span>{{ details.price }} <span>/-</span>
             </p>
-          </div>
-
-          <div class="delivery my-4">
-            <p class="font-weight-bold mb-0">
-              <span><i class="fa-solid fa-truck"></i></span>
-              <b>Features</b>
+            <p class="text-secondary mb-1">
+              (Additional tax may apply on Payment)
             </p>
-            <p class="text-secondary">{{ details.features }}</p>
-          </div>
-          <div class="delivery-options my-4">
-            <p class="font-weight-bold mb-0">
-              <span><i class="fa-solid fa-filter"></i></span>
-              <b>Location</b>
-            </p>
-            <p class="text-secondary">{{ details.location }}</p>
+            <div class="instructions p-4" style="color: rgb(2, 20, 35)">
+              <h5>Steps to follow before paying the Amount:</h5>
+              <ul>
+                <li>Upload a valid ID proof for verification purposes.</li>
+                <li>Review and agree to the terms of the lease agreement.</li>
+                <li>
+                  Confirm the accuracy of your payment details before
+                  proceeding.
+                </li>
+                <li>
+                  Ensure the availability of sufficient funds in your account.
+                </li>
+                <li>
+                  Verify the rental property details for accuracy and
+                  suitability.
+                </li>
+                <li>
+                  Familiarize yourself with the rental property's rules and
+                  regulations.
+                </li>
+                <li>
+                  Communicate any special requests or requirements to the
+                  landlord or property manager.
+                </li>
+                <li>
+                  Arrange for any necessary inspections or visits to the
+                  property.
+                </li>
+              </ul>
+            </div>
+            <div class="block">
+              <ng-container
+                *ngIf="idProofApproved === true; else pendingOrProceed"
+              >
+                <button
+                  class="shadow btn custom-btn-pay col-md-12"
+                  style="background-color: orangered; border-radius: 5px"
+                  [routerLink]="['/user/upload-id']"
+                  [queryParams]="{ id: details._id }"
+                >
+                  Upload ID Proof
+                </button>
+              </ng-container>
+              <ng-template #pendingOrProceed>
+                <ng-container *ngIf="idProofApproved === false">
+                  <button
+                    class="shadow btn custom-btn"
+                    style="background-color: orangered; border-radius: 5px"
+                  >
+                    Proceed to Payment
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="isPending !== false">
+                  <button
+                    class="shadow btn custom-btn"
+                    style="background-color: yellow; border-radius: 5px"
+                    disabled
+                  >
+                    Pending
+                  </button>
+                </ng-container>
+              </ng-template>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="container similar-products my-4">
-      <hr />
-      <p class="display-5">Similar Apartments</p>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="similar-product">
-            <img
-              class="w-100"
-              src="https://source.unsplash.com/gsKdPcIyeGg"
-              alt="Preview"
-            />
-            <p class="title">Lovely black dress</p>
-            <p class="price">$100</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="similar-product">
-            <img
-              class="w-100"
-              src="https://source.unsplash.com/sg_gRhbYXhc"
-              alt="Preview"
-            />
-            <p class="title">Lovely Dress with patterns</p>
-            <p class="price">$85</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="similar-product">
-            <img
-              class="w-100"
-              src="https://source.unsplash.com/gJZQcirK8aw"
-              alt="Preview"
-            />
-            <p class="title">Lovely fashion dress</p>
-            <p class="price">$200</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="similar-product">
-            <img
-              class="w-100"
-              src="https://source.unsplash.com/qbB_Z2pXLEU"
-              alt="Preview"
-            />
-            <p class="title">Lovely red dress</p>
-            <p class="price">$120</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- END EDMO HTML (Happy Coding!)-->
   </main>
+
+  <div class="row" style="background-color: rgb(2, 2, 46); padding: 30px">
+    <div class="col-md-6">
+      <div class="p-4 rounded" style="min-height: 400px; color: white">
+        <h2>Product Details</h2>
+        <p>
+          {{ details.description }}
+        </p>
+        <ul>
+          <li>Detail 1</li>
+          <li>Detail 2</li>
+          <li>Detail 3</li>
+          <li>Detail 1</li>
+          <li>Detail 2</li>
+          <li>Detail 3</li>
+          <!-- Add more details as needed -->
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div
+        class="p-4 rounded"
+        style="min-height: 400px; max-height: 2000px; color: white"
+      >
+        <h2>Product Features</h2>
+        <ul>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <!-- Add more features as needed -->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <h4 class="text-center mb-3">Chat with the Seller</h4>
+        <p class="text-center mb-4">
+          Have questions or need assistance? Start a conversation with the
+          seller now.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center mb mb-5">
+        <div>
+          <button
+            [routerLink]="['/user/live-chat']"
+            [queryParams]="{ id: details.userId }"
+            class="custom-btn"
+            style="background-color: orangered; border-radius: 5px"
+          >
+            Chat with us!
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- Add the horizontal line here -->
+
+    <div
+      class="row d-flex"
+      style="display: flex; justify-content: space-between"
+    >
+      <div class="d-flex">
+        <div class="col-md-6 mt-5">
+          <h4 class="text-center mb-3">Add Review</h4>
+          <p class="text-center mb-4" style="">
+            Share your experience with the product by leaving<br />
+            a review.
+          </p>
+          <div class="col-md-8 offset-md-2">
+            <form class="review-form-inner">
+              <!-- Star Rating -->
+              <div class="star-rating d-flex justify-content-center">
+                <!-- Your star rating inputs -->
+              </div>
+              <!-- Comment Input -->
+              <div class="d-flex">
+                <input
+                  id="comment"
+                  [(ngModel)]="review.comment"
+                  name="comment"
+                  required
+                  class="d-flex justify-content-center mt-3 offset-md-0 text-center"
+                  style="
+                    width: 100%;
+                    height: 50px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    border: 1px solid orangered;
+                  "
+                  placeholder="Write your review here..."
+                />
+              </div>
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="review-form-button mt-3"
+                (click)="submitReview(details._id)"
+                style="
+                  width: 100%;
+                  height: 50px;
+                  border: 0px;
+                  border-radius: 5px;
+                  background-color: orangered;
+                  color: white;
+                "
+              >
+                Submit Review
+              </button>
+              <!-- Error Message -->
+              <p
+                class="text-danger"
+                style="width: 200px; word-break: break-all"
+              >
+                {{ messageSubmit }}
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-5">
+          <h4 class="text-center mb-3">Report Seller</h4>
+          <p class="text-center mb-4">
+            Report any issues or concerns regarding the <br />
+            seller.
+          </p>
+          <div class="col-md-8 offset-md-2">
+            <form
+              [formGroup]="reportForm"
+              (ngSubmit)="submitReport(details._id)"
+            >
+              <!-- Star Rating -->
+              <div class="star-rating d-flex justify-content-center">
+                <!-- Your star rating inputs -->
+              </div>
+              <!-- Comment Input -->
+              <div class="d-flex">
+                <input
+                  id="comment"
+                  name="comment"
+                  required
+                  class="d-flex justify-content-center mt-3 offset-md-0 text-center"
+                  style="
+                    width: 100%;
+                    height: 50px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    border: 1px solid orangered;
+                  "
+                  placeholder="Write your report here..."
+                />
+              </div>
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="review-form-button mt-3"
+                (click)="submitReport(details._id)"
+                style="
+                  width: 100%;
+                  height: 50px;
+                  border: 0px;
+                  border-radius: 5px;
+                  background-color: orangered;
+                  color: white;
+                "
+              >
+                Submit Report
+              </button>
+              <!-- Error Message -->
+              <p
+                class="text-danger"
+                style="width: 200px; word-break: break-all"
+              >
+                {{ messageSubmit }}
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 mx-auto">
+              <!-- CUSTOM BLOCKQUOTE -->
+              <blockquote
+                class="blockquote blockquote-custom bg-white p-5 shadow rounded position-relative"
+              >
+                <div class="blockquote-custom-icon bg-info shadow-sm">
+                  <i class="fa fa-quote-left text-white"></i>
+                </div>
+                <p class="mb-0 mt-2 font-italic">
+                  {{ displayedReviews[startIndex].comment }}
+                </p>
+
+                <!-- Arrow buttons -->
+                <button
+                  class="arrow-button left"
+                  *ngIf="isLeftVisible()"
+                  (click)="movePreviousReview()"
+                >
+                  <i class="fa fa-arrow-left"></i>
+                </button>
+                <button
+                  class="arrow-button right"
+                  *ngIf="isRightVisible()"
+                  (click)="moveNextReview()"
+                >
+                  <i class="fa fa-arrow-right"></i>
+                </button>
+              </blockquote>
+              <!-- END -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </body>

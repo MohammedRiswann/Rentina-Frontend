@@ -1,74 +1,228 @@
-<link
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-  rel="stylesheet"
-/>
-<div
-  class="container"
-  *ngFor="let apartments of filteredProperties"
-  [routerLink]="['/user/lands-details']"
-  [queryParams]="{ id: apartments._id }"
->
-  <div class="col-xs-12 col-md-6 bootstrap snippets bootdeys">
-    <!-- product -->
-    <div
-      class="product-content product-wrap clearfix"
-      style="border-radius: 10px; border: 2px solid orangered"
-    >
-      <div class="row">
-        <div class="col-md-5 col-sm-12 col-xs-12">
-          <div class="product-image">
-            <img
-              src="{{ apartments.images[0] }}"
-              class="img-responsive"
-              style="height: 290px; width: 100%"
-            />
-          </div>
-        </div>
-        <div class="col-md-7 col-sm-12 col-xs-12">
-          <div class="product-deatil">
-            <h5 class="name">
-              <a href="#">
-                {{ apartments.name }}<span>{{ apartments.location }}</span>
-              </a>
-            </h5>
-            <p class="price-container">
-              <span>{{ apartments.price }}</span>
-            </p>
-            <span class="tag1"></span>
-          </div>
-          <div class="description">
-            <p>{{ apartments.type }}</p>
-          </div>
-          <div class="product-info smart-form">
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="javascript:void(0);" class="btn btn-success"
-                  >Add to Wishlist</a
-                >
-              </div>
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container-fluid justify-content-between">
+    <!-- Left elements -->
+    <div class="d-flex">
+      <!-- Brand -->
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+          height="20"
+          alt="MDB Logo"
+          loading="lazy"
+          style="margin-top: 2px"
+        />
+      </a>
 
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="rating">
-                  <label for="stars-rating-5"><i class="fa fa-star"></i></label>
-                  <label for="stars-rating-4"><i class="fa fa-star"></i></label>
-                  <label for="stars-rating-3"
-                    ><i class="fa fa-star text-primary"></i
-                  ></label>
-                  <label for="stars-rating-2"
-                    ><i class="fa fa-star text-primary"></i
-                  ></label>
-                  <label for="stars-rating-1"
-                    ><i class="fa fa-star text-primary"></i
-                  ></label>
+      <!-- Search form -->
+      <form class="input-group w-auto my-auto d-none d-sm-flex">
+        <input
+          autocomplete="off"
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          style="min-width: 125px"
+        />
+        <span class="input-group-text border-0 d-none d-lg-flex"
+          ><i class="fas fa-search"></i
+        ></span>
+      </form>
+    </div>
+    <!-- Left elements -->
+
+    <!-- Center elements -->
+    <ul class="navbar-nav flex-row d-none d-md-flex">
+      <li class="nav-item me-3 me-lg-1 active">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-home fa-lg"></i></span>
+          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+      </li>
+
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-flag fa-lg"></i></span>
+        </a>
+      </li>
+
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-video fa-lg"></i></span>
+        </a>
+      </li>
+
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-shopping-bag fa-lg"></i></span>
+        </a>
+      </li>
+
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-users fa-lg"></i></span>
+          <span class="badge rounded-pill badge-notification bg-danger">2</span>
+        </a>
+      </li>
+    </ul>
+    <!-- Center elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="#">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+            class="rounded-circle"
+            height="22"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          />
+          <strong class="d-none d-sm-block ms-1">John</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="#">
+          <span><i class="fas fa-plus-circle fa-lg"></i></span>
+        </a>
+      </li>
+      <li class="nav-item dropdown me-3 me-lg-1">
+        <a
+          data-mdb-dropdown-init
+          class="nav-link dropdown-toggle hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          aria-expanded="false"
+        >
+          <i class="fas fa-comments fa-lg"></i>
+
+          <span class="badge rounded-pill badge-notification bg-danger">6</span>
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <li>
+            <a class="dropdown-item" href="#">Some news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Another news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown me-3 me-lg-1">
+        <a
+          data-mdb-dropdown-init
+          class="nav-link dropdown-toggle hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bell fa-lg"></i>
+          <span class="badge rounded-pill badge-notification bg-danger"
+            >12</span
+          >
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <li>
+            <a class="dropdown-item" href="#">Some news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Another news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown me-3 me-lg-1">
+        <a
+          data-mdb-dropdown-init
+          class="nav-link dropdown-toggle hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          aria-expanded="false"
+        >
+          <i class="fas fa-chevron-circle-down fa-lg"></i>
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <li>
+            <a class="dropdown-item" href="#">Some news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Another news</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Right elements -->
+  </div>
+</nav>
+<!-- Navbar -->
+<div class="container mt-5 mb-5">
+  <h5>Apartments To Rent</h5>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3 mb-4" *ngFor="let apartment of filteredProperties">
+          <div class="card" style="max-height: 500px">
+            <img
+              class="card-img-top"
+              [src]="apartment.images[0]"
+              alt="Apartment Image"
+              style="height: 180px"
+            />
+            <div class="card-body">
+              <h5
+                class="card-title"
+                style="font-weight: 500; color: rgb(3, 3, 63)"
+              >
+                {{ apartment.name }}
+              </h5>
+              <p class="card-text">{{ apartment.location }}</p>
+              <p class="card-text text-truncate">
+                {{ apartment.features }} | {{ apartment.type }}
+              </p>
+              <p class="card-text text-truncate p-0">
+                {{ apartment.description }}
+              </p>
+              <hr />
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span>RS:</span>
+                  <span class="ml-1" style="font-weight: 600">
+                    {{ apartment.price }}</span
+                  >
+                  <span>/-</span>
                 </div>
+
+                <button
+                  class="btn btn-primary col-md-6"
+                  type="button"
+                  [routerLink]="['/user/apartment-details']"
+                  [queryParams]="{ id: apartment._id }"
+                >
+                  Have a Look..
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- end product -->
   </div>
-
-  <!-- end product -->
 </div>

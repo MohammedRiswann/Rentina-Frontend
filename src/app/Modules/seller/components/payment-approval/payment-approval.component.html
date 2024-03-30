@@ -1,0 +1,87 @@
+<div class="container" style="padding: 100px">
+  <h1
+    class="orange-text text-center"
+    style="padding: 20px; font-weight: 700; color: orangered"
+  >
+    Pending Approval
+  </h1>
+  <div class="table-responsive">
+    <table
+      class="table table-bordered table-striped table-hover"
+      style="border-color: orangered; border: 2px solid orangered"
+    >
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th scope="col">Id Proof</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let details of productDetails">
+          <ng-container *ngIf="details?.Property?.length > 0">
+            <td>{{ details.Property[0].name }}</td>
+            <td>{{ details.Property[0].price }}</td>
+            <td>{{ details.Property[0].location }}</td>
+
+            <td>
+              <img
+                [src]="details.images"
+                alt="Profile Image"
+                style="max-width: 100px; max-height: 100px"
+              />
+            </td>
+            <td>
+              <button
+                class="btn btn-success"
+                style="
+                  color: white;
+                  background-color: orangered;
+                  border: 2px solid orangered;
+                  border-radius: 5px;
+                "
+                (click)="confirmApproval(details._id)"
+              >
+                Approve Payment
+              </button>
+            </td>
+          </ng-container>
+        </tr>
+        <tr *ngFor="let details of productDetails">
+          <ng-container *ngIf="details?.lands?.length > 0">
+            <td>{{ details.lands[0].name }}</td>
+            <td>{{ details.lands[0].price }}</td>
+            <td>{{ details.lands[0].location }}</td>
+            <td>{{ details.price }}</td>
+            <td>
+              <img
+                [src]="details.images"
+                alt="Profile Image"
+                style="max-width: 100px; max-height: 100px"
+              />
+            </td>
+            <td>
+              <button
+                class="btn btn-success"
+                style="
+                  color: white;
+                  background-color: orangered;
+                  border: 2px solid orangered;
+                  border-radius: 5px;
+                "
+                (click)="confirmApproval(details._id)"
+              >
+                Approve Payment
+              </button>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <div class="no-sellers" *ngIf="details.length === 0">
+      Nothing to list here.
+    </div> -->
+  </div>
+</div>

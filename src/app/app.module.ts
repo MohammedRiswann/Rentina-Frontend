@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OtpComponent } from './common/otp/otp.component';
 import { HomeComponent } from './common/home/home.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { HeaderComponent } from './common/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { LandComponent } from './common/land/land.component';
 import { InterceptorService } from './common/services/interceptor.service';
 import { NotFoundComponent } from './common/not-found/not-found.component';
@@ -16,7 +16,8 @@ import { UserRoutingModule } from './Modules/user/user-routing.module';
 import { AdminModule } from './Modules/admin/admin.module';
 import { ApartmentDetailsComponent } from './Modules/user/component/apartment-details/apartment-details.component';
 import { LandsListComponent } from './Modules/user/lands-list/lands-list.component';
-import { LandDetailsComponent } from './Modules/user/land-details/land-details.component';
+import { LandDetailsComponent } from './Modules/user/component/land-details/land-details.component';
+import { MapComponent } from './common/map/map.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LandDetailsComponent } from './Modules/user/land-details/land-details.c
     ApartmentDetailsComponent,
     LandsListComponent,
     LandDetailsComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

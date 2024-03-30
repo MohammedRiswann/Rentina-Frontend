@@ -1,20 +1,13 @@
-.full-height-container {
-  height: 100vh; /* Set the height of the container to 100% of the viewport height */
-  display: flex; /* Use flexbox for positioning */
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+a:hover {
+  background-color: orangered;
+  color: white;
 }
-
+a {
+  width: 230px;
+  color: white;
+}
 button {
-  padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 16px; /* Adjust font size as needed */
-  background-color: #007bff; /* Example background color */
-  color: #fff; /* Example text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-button:hover {
-  background-color: #0056b3; /* Example background color on hover */
+  background-color: transparent;
+  border: 0;
+  padding-top: 30px;
 }

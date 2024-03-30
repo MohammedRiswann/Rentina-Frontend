@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PropertyService } from '../services/propertyService.service';
-import { SocketService } from 'src/app/common/services/socket.service';
+import { PropertyService } from '../../services/propertyService.service';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-land-details',
@@ -21,11 +22,14 @@ export class LandDetailsComponent {
   startIndex = 0;
   count = 4;
   showMoreButton = true;
+  reportForm!: FormGroup;
+  isInWishlist: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private service: PropertyService,
-    private socket: SocketService
+
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +37,9 @@ export class LandDetailsComponent {
       this.apartmentData = response['id'];
       console.log(this.apartmentData);
       this.getReviews(this.apartmentData);
+      this.reportForm = this.fb.group({
+        reason: ['', Validators.required],
+      });
     });
     if (this.apartmentData) {
       this.getApartmentDetails(this.apartmentData);
@@ -47,7 +54,8 @@ export class LandDetailsComponent {
   getApartmentDetails(userId: string) {
     this.service.getLandDetails(userId).subscribe((response) => {
       this.details = response;
-      console.log(response, 'hello');
+
+      console.log(this.details);
     });
   }
   // sendMessage() {
@@ -64,6 +72,7 @@ export class LandDetailsComponent {
         console.error('Failed to submit review:', error);
       }
     );
+    this.getReviews(id);
   }
   getReviews(id: string) {
     console.log('hello');
@@ -115,6 +124,52 @@ export class LandDetailsComponent {
 
   selectImage(imageUrl: string) {
     this.selectedImage = imageUrl;
+  }
+  submitReport(id: string) {
+    if (this.reportForm.valid) {
+      const reportData = this.reportForm.value;
+      this.service.submitReport(reportData, id).subscribe(
+        (response) => {
+          console.log('Report submitted successfully');
+        },
+        (error) => {
+          console.error('Error submitting report:', error);
+        }
+      );
+    }
+  }
+  addToWishlist(): void {
+    this.service.addToWishlist(this.apartmentData).subscribe({
+      next: () => {
+        console.log('Product added to wishlist successfully.');
+        this.isInWishlist = true;
+      },
+      error: (error) => {
+        console.error('Failed to add product to wishlist:', error);
+      },
+    });
+  }
+
+  removeFromWishlist(productId: string): void {
+    this.service.removeFromWishlist(productId).subscribe({
+      next: () => {
+        console.log('Product removed from wishlist successfully.');
+        this.isInWishlist = false;
+      },
+      error: (error) => {
+        console.error('Failed to remove product from wishlist:', error);
+      },
+    });
+  }
+  checkWishlistStatus(productId: string): void {
+    this.service.isInWishlist(productId).subscribe({
+      next: (result) => {
+        this.isInWishlist = result;
+      },
+      error: (error) => {
+        console.error('Failed to check wishlist status:', error);
+      },
+    });
   }
 }
 

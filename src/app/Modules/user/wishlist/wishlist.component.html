@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>My Wishlist</h2>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of wishlistItems">
+          <div *ngFor="let items of item.land">
+            <div>{{ items.name }}</div>
+            <div>{{ items.location }}</div>
+          </div>
+          <div *ngFor="let apartments of item.apartments">
+            <div>{{ apartments.name }}</div>
+            <div>{{ apartments.price }}</div>
+          </div>
+          <button
+            class="btn btn-danger btn-sm float-right"
+            (click)="removeFromWishlist(item)"
+          >
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

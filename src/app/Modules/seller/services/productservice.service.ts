@@ -19,8 +19,15 @@ export class ProductserviceService {
     );
   }
   addLands(landData: any): Observable<any> {
-    console.log('heyloo');
-
     return this.http.post<any>(`${this.baseUrl}/sellers/add-lands`, landData);
+  }
+  fetchId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/sellers/approval-payment/${id}`);
+  }
+  approvePayment(id: string): Observable<any[]> {
+    return this.http.patch<any>(
+      `${this.baseUrl}/sellers/approve-Payment/${id}`,
+      {}
+    );
   }
 }

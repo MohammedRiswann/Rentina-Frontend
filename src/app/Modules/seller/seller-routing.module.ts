@@ -16,6 +16,7 @@ import { ApartmentListComponent } from './components/apartment-list/apartment-li
 import { Authguard } from 'src/app/guards/home.guard';
 import { loginGuard } from 'src/app/guards/login.guard';
 import { LandsDetailsComponent } from './components/lands-details/lands-details.component';
+import { PaymentApprovalComponent } from './components/payment-approval/payment-approval.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,21 @@ const routes: Routes = [
         path: 'properties',
         component: ApartmentListComponent,
       },
+      {
+        path: 'add-products',
+        component: AddProductsComponent,
+        canActivate: [AuthguardSeller],
+      },
+      {
+        path: 'add-lands',
+        canActivate: [AuthguardSeller],
+        component: AddLandsComponent,
+      },
+      {
+        path: 'payment-approval',
+        canActivate: [AuthguardSeller],
+        component: PaymentApprovalComponent,
+      },
     ],
   },
   {
@@ -58,16 +74,6 @@ const routes: Routes = [
     path: 'login',
     canActivate: [loginGuard],
     component: LogincomponentSeller,
-  },
-  {
-    path: 'add-products',
-    component: AddProductsComponent,
-    canActivate: [AuthguardSeller],
-  },
-  {
-    path: 'add-lands',
-    canActivate: [AuthguardSeller],
-    component: AddLandsComponent,
   },
 
   {

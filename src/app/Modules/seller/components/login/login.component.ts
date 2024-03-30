@@ -14,6 +14,7 @@ export class LogincomponentSeller {
   loginForm!: FormGroup;
   errormsg: any = '';
   msg: any = '';
+  seller: string = '';
   constructor(
     private form: FormBuilder,
     private router: Router,
@@ -32,10 +33,16 @@ export class LogincomponentSeller {
 
     this.service.login(phone, password).subscribe({
       next: (response) => {
+        console.log(response);
+        this.seller = response.seller._id;
+        console.log(this.seller);
+
         this.token.setToken(response.token);
         localStorage.setItem('type', response.type);
         localStorage.setItem('userId', response.seller._id);
-        this.router.navigate(['/seller/home']);
+        this.router.navigate(['/seller/home'], {
+          queryParams: { id: response.seller._id },
+        });
       },
       error: (response) => {
         this.msg = response.error.message;

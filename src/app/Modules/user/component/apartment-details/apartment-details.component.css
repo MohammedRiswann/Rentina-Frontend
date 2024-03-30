@@ -109,3 +109,17 @@ text-color {
   width: 525px; /* Adjust width as needed */
   height: 500px; /* Adjust height as needed */
 }
+.custom-btn-pay:hover {
+  text-transform: capitalize;
+  background-color: #0093c4;
+  color: orangered;
+
+  border-radius: 0;
+}
+.custom-btn-pay {
+  border: 1px solid orangered;
+  color: orangered;
+  border-radius: 5px;
+  background-color: #ffffff !important;
+  font-size: 16px;
+}

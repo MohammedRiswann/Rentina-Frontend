@@ -3,23 +3,18 @@
   background-color: orangered;
   border-color: orangered;
 }
-btn:hover {
-  transition: 2s;
-  background-color: white;
+.btn:hover {
+  transition: background-color 0.1s, color 0.1s; /* Specify which properties should transition and the duration */
+  background-color: rgb(255, 255, 255);
   border-color: orangered;
-  color: orangered;
+  color: orangered; /* This line overrides the previous color: orangered; declaration */
 }
+
 body {
-  background: #eee;
+  background: #dfdddd;
+  font-family: "Poppins", sans-serif;
 }
-.ratings i {
-  font-size: 16px;
-  color: red;
-}
-.strike-text {
-  color: red;
-  text-decoration: line-through;
-}
+
 .product-image {
   width: 100%;
 }
@@ -47,4 +42,14 @@ h5 {
 }
 .div-main {
   width: 800px;
+  display: flex;
+  height: 1500px;
+  padding: 10px;
+}
+.card-height {
+  max-height: 525px;
+}
+.card-img-top:hover {
+  transition: transform 1s;
+  transform: scale(1.1);
 }

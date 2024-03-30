@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SellerService } from '../../services/seller-id.service';
 
 @Component({
@@ -8,8 +8,20 @@ import { SellerService } from '../../services/seller-id.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponentSeller {
-  constructor(private router: Router, private sellerService: SellerService) {}
+export class HomeComponentSeller implements OnInit {
+  id: string = '';
+  constructor(
+    private router: Router,
+    private sellerService: SellerService,
+    private ActivatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.ActivatedRoute.queryParams.subscribe((resposne) => {
+      this.id = resposne['id'];
+    });
+    console.log(this.id);
+  }
 
   navigateTo(route: string) {
     const sellerId = this.sellerService.getSellerId();

@@ -1,60 +1,53 @@
-<div class="container mt-5 mb-5">
-  <div class="d-flex justify-content-center row" style="flex-direction: column">
-    <div class="col-md-7 div-main" style="flex-direction: column; width: 900px">
-      <div
-        class="p-2 bg-white border rounded"
-        *ngFor="let apartments of filteredProperties"
-      >
-        <div class="col-md-12 mt-1 position-relative">
-          <img
-            class="img-responsive rounded product-image"
-            src="{{ apartments.images[0] }}"
-            alt="Second Image"
-            style="max-width: 100%; height: 400px"
-          />
-          <div class="image-overlay">+4</div>
-        </div>
-
-        <div class="col-md-10 mt-3">
-          <h5>
-            <strong>{{ apartments.name }}</strong>
-          </h5>
-          <div class="d-flex flex-row">
-            <div class="ratings mr-2">
-              <i class="fa fa-star"></i><i class="fa fa-star"></i
-              ><i class="fa fa-star"></i><i class="fa fa-star"></i>
-            </div>
-          </div>
-          <div class="mt-1 mb-1 spec-1">
-            <strong>Features:</strong> {{ apartments.features }}<br />
-            <strong>Type:</strong> {{ apartments.type }}<br />
-            <strong>Location:</strong> {{ apartments.location }}<br />
-          </div>
-
-          <p class="text-justify text-truncate para mb-0">
-            <strong>Description:</strong> {{ apartments.description }}<br />
-          </p>
-        </div>
-
+<div class="container mb-5 mt-3">
+  <h5>Apartments To Rent</h5>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
         <div
-          class="align-items-center align-content-center col-md-3 border-left mt-1"
+          class="col-md-3 mb-4 mt-3"
+          *ngFor="let apartment of filteredProperties"
         >
-          <div class="d-flex flex-row align-items-center">
-            <span>RS:</span>
-            <h4 class="mr-1">{{ apartments.price }}</h4>
-          </div>
+          <div class="card" style="max-height: 500px; overflow: hidden">
+            <img
+              class="card-img-top"
+              [src]="apartment.images[0]"
+              alt="Apartment Image"
+              style="height: 180px"
+            />
+            <div class="card-body">
+              <h5
+                class="card-title"
+                style="font-weight: 500; color: rgb(3, 3, 63)"
+              >
+                {{ apartment.name }}
+              </h5>
+              <p class="card-text">{{ apartment.location }}</p>
+              <p class="card-text text-truncate">
+                {{ apartment.features }} | {{ apartment.type }}
+              </p>
+              <p class="card-text text-truncate p-0">
+                {{ apartment.description }}
+              </p>
+              <hr />
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span>RS:</span>
+                  <span class="ml-1" style="font-weight: 600">
+                    {{ apartment.price }}</span
+                  >
+                  <span>/-</span>
+                </div>
 
-          <div class="d-flex flex-column mt-4">
-            <button
-              class="btn btn-primary btn-sm"
-              type="button"
-              [routerLink]="['/user/apartment-details']"
-              [queryParams]="{ id: apartments._id }"
-            >
-              Details</button
-            ><button class="btn btn-outline-primary btn-sm mt-2" type="button">
-              Add to wishlist
-            </button>
+                <button
+                  class="btn btn-primary col-md-6"
+                  type="button"
+                  [routerLink]="['/user/apartment-details']"
+                  [queryParams]="{ id: apartment._id }"
+                >
+                  Have a Look..
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

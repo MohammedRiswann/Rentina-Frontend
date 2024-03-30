@@ -82,3 +82,6 @@ img {
 .font-cond-b {
   font-weight: 700 !important;
 }
+#map {
+  height: 180px;
+}

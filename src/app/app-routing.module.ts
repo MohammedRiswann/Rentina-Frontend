@@ -10,6 +10,7 @@ import { otpGuard } from './guards/otp.guard';
 
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { LandComponent } from './common/land/land.component';
+import { MapComponent } from './common/map/map.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'lands',
     canActivate: [Authguard],
     component: LandComponent,
+  },
+  {
+    path: 'map',
+    component: MapComponent,
   },
 
   {

@@ -15,6 +15,7 @@ export class PropertyListComponent implements OnInit {
   typeQuery: string = '';
   minPrice: number | undefined;
   maxPrice: number | undefined;
+  details: any;
 
   constructor(
     private propertyService: PropertyService,

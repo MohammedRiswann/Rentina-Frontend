@@ -38,7 +38,7 @@ export class PropertyService {
     }
     return this.http.get<any[]>(url);
   }
-  getApartmentDetails(userId: string): Observable<any[]> {
+  getApartmentDetails(userId: string): Observable<any> {
     console.log(userId);
 
     return this.http.get<any>(
@@ -87,5 +87,44 @@ export class PropertyService {
 
   getProductReviews(productId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/reviews/products/${productId}`);
+  }
+  submitReport(reportData: string, id: string) {
+    return this.http.post<any>(`${this.apiUrl}/reviews/report`, {
+      reportData,
+      id,
+    });
+  }
+  addToWishlist(productId: string): Observable<any> {
+    console.log(productId);
+
+    return this.http.post<any>(`${this.apiUrl}/wishlist/add`, { productId });
+  }
+
+  removeFromWishlist(productId: string): Observable<any> {
+    console.log(productId);
+
+    return this.http.post<any>(`${this.apiUrl}/wishlist/remove`, { productId });
+  }
+
+  isInWishlist(productId: string): Observable<any> {
+    return this.http.get<boolean>(`${this.apiUrl}/wishlist/check/${productId}`);
+  }
+  getWishlistItems(): Observable<any> {
+    return this.http.get<boolean>(`${this.apiUrl}/wishlist/get-wishlist`);
+  }
+  uploadId(sellerData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/users/upload-id`, sellerData);
+  }
+  getApproved(id: string): Observable<any> {
+    return this.http.get<boolean>(
+      `${this.apiUrl}/users/get-payment-approved/${id}`
+    );
+  }
+  getPending(id: string): Observable<any> {
+    console.log('hello');
+
+    return this.http.get<boolean>(
+      `${this.apiUrl}/users/get-payment-pending/${id}`
+    );
   }
 }
