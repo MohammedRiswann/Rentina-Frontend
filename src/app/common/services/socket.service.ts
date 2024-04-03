@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { io } from 'socket.io-client';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environment/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -14,9 +15,9 @@ const httpOptions = {
 export class socketService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  socket = io('http://localhost:1000');
+  socket = io(environment.socket);
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = environment.api;
 
   sendMessage(sender: any, reciever: string, message: string) {
     console.log('sendMessage: ', message);

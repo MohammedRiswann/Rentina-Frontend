@@ -3,13 +3,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlockService {
   constructor(private http: HttpClient) {}
-  private apiUrl = 'http://localhost:2000';
+  private apiUrl = environment.api;
 
   approveUser(sellerId: string): Observable<any[]> {
     return this.http.patch<any>(
