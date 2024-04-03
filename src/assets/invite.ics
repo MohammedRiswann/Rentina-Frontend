@@ -1,0 +1,50 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Asia/Kolkata:20240315T174500
+DTEND;TZID=Asia/Kolkata:20240315T181500
+DTSTAMP:20240312T105657Z
+ORGANIZER;CN=AtDrive Consulting:mailto:consulting@atdrive.com
+UID:jiidgdepgrif5jl7jcnjvanaeo@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=AtDrive Consulting;X-NUM-GUESTS=0:mailto:consulting@atdrive.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=riswan14.rm@gmail.com;X-NUM-GUESTS=0:mailto:riswan14.rm@gmail.com
+X-MICROSOFT-CDO-OWNERAPPTID:1152064769
+CREATED:20240312T051914Z
+DESCRIPTION:Event Name: Interview\n\nCall shall be via Zoom please install 
+ app on mobile and laptop\n\nLocation: This is a Zoom web conference.\n\nYou
+  can join this meeting from your computer\, tablet\, or smartphone.\nhttps:
+ //us06web.zoom.us/j/81741995929\n\nOne tap mobile:\n+1 929 205 6099\,\,8174
+ 1995929#\n+1 301 715 8592\,\,81741995929#\n\nYou can also dial in using you
+ r phone.\nUS: +1 929 205 6099\, +1 301 715 8592\, +1 305 224 1968\, +1 309 
+ 205 3325\, +1 312 626 6799\, +1 646 931 3860\, +1 253 205 0468\, +1 253 215
+  8782\, +1 346 248 7799\, +1 360 209 5623\, +1 386 347 5053\, +1 507 473 48
+ 47\, +1 564 217 2000\, +1 669 444 9171\, +1 669 900 6833\, +16892781000\, +
+ 1 719 359 4580\nMeeting ID: 817-419-95929\n\nFind your local number: https:
+ //us06web.zoom.us/u/kxh2Qr94r\n\nMobile Number: +91 81139 58621\n\nReschedu
+ le Reason: I have a doctor appoinment tomorrow.\n\nNeed to make changes to 
+ this event?\nCancel: https://calendly.com/cancellations/5b3e87e9-777f-4f03-
+ 8682-16aea8891904\nReschedule: https://calendly.com/reschedulings/5b3e87e9-
+ 777f-4f03-8682-16aea8891904\n\nPowered by Calendly.com\n
+LAST-MODIFIED:20240312T105655Z
+LOCATION:https://us06web.zoom.us/j/81741995929
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Mohammed Riswan M and AtDrive Consulting
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
