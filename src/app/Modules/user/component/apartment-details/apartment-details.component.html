@@ -101,7 +101,7 @@
             </div>
             <div class="block">
               <ng-container
-                *ngIf="idProofApproved === true; else pendingOrProceed"
+                *ngIf="idProofApproved === false; else pendingOrProceed"
               >
                 <button
                   class="shadow btn custom-btn-pay col-md-12"
@@ -113,7 +113,7 @@
                 </button>
               </ng-container>
               <ng-template #pendingOrProceed>
-                <ng-container *ngIf="idProofApproved === false">
+                <ng-container *ngIf="idProofApproved === true">
                   <button
                     class="shadow btn custom-btn"
                     style="background-color: orangered; border-radius: 5px"
@@ -121,7 +121,7 @@
                     Proceed to Payment
                   </button>
                 </ng-container>
-                <ng-container *ngIf="isPending !== false">
+                <ng-container *ngIf="isPending === true">
                   <button
                     class="shadow btn custom-btn"
                     style="background-color: yellow; border-radius: 5px"

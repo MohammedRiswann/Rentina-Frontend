@@ -26,9 +26,9 @@ export class ApartmentDetailsComponent implements OnInit {
   showMoreButton = true;
   isInWishlist: boolean = false;
   ReportMessage: string = '';
-  idProofApproved: boolean | null = null;
+  idProofApproved: boolean = false;
   items: any;
-  isPending: boolean | null = null;
+  isPending: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,6 +55,7 @@ export class ApartmentDetailsComponent implements OnInit {
       console.log(items);
     });
     this.getIsPending(this.apartmentData);
+    this.loadPaymentApproval(this.apartmentData);
   }
 
   getApartmentDetails(userId: string) {
@@ -144,14 +145,19 @@ export class ApartmentDetailsComponent implements OnInit {
   }
   loadPaymentApproval(id: string) {
     this.service.getApproved(id).subscribe((response) => {
-      console.log(response);
+      console.log(response.details.isVerified);
+
+      if (response.details.isVerified) {
+        this.idProofApproved = true;
+      }
     });
   }
   getIsPending(id: string) {
     this.service.getPending(id).subscribe((response) => {
-      console.log(response);
       if (response.details.isPending) {
         this.isPending = true;
+        console.log('false');
+        console.log(this.isPending);
       }
     });
   }

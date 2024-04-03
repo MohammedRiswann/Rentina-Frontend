@@ -24,7 +24,7 @@ export class ProductserviceService {
   fetchId(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/sellers/approval-payment/${id}`);
   }
-  approvePayment(id: string): Observable<any[]> {
+  approvePayment(id: string): Observable<any> {
     return this.http.patch<any>(
       `${this.baseUrl}/sellers/approve-Payment/${id}`,
       {}

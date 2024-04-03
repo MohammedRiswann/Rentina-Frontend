@@ -18,6 +18,7 @@ import { ApartmentDetailsComponent } from './Modules/user/component/apartment-de
 import { LandsListComponent } from './Modules/user/lands-list/lands-list.component';
 import { LandDetailsComponent } from './Modules/user/component/land-details/land-details.component';
 import { MapComponent } from './common/map/map.component';
+import { NotificationComponent } from './common/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MapComponent } from './common/map/map.component';
     SellersModule,
     UserRoutingModule,
     AdminModule,
+    NotificationComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

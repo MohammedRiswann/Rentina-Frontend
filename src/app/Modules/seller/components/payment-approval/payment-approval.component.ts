@@ -13,6 +13,8 @@ export class PaymentApprovalComponent {
   idDetails!: IdDetails;
   users: any;
   productDetails: any[];
+  showNotification: boolean = false;
+  notificationMessage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -43,8 +45,17 @@ export class PaymentApprovalComponent {
   rejectId() {}
   confirmApproval(id: string) {
     this.service.approvePayment(id).subscribe((response) => {
-      console.log(response);
+      console.log('nbvcxzcvghjk');
+
+      if (response.success) {
+        this.notificationMessage = 'Approved Successfully';
+        this.showNotification = true;
+        console.log('jhgfgdsafghj');
+      }
     });
+
+    // this.showNotification = true;
+
     // this.appService.sendApprovalEmail(sellerID).subscribe((emailResponse) => {
     //   console.log(emailResponse);
     // });
